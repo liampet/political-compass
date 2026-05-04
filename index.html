@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Compass — Political Alignment Test</title>2
-<meta name="description" content="Find out where you  stand politically. 3 test lengths, 5 dimensions, plain-English results.">
+<title>Find My Politics — Political Alignment Test</title>
+<meta name="description" content="Find My Politics — a political alignment test that actually tells you something. 5 dimensions, plain-English results, no agenda.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap');
 
@@ -38,6 +38,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 /* HEADER */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;background:var(--hdr-bg);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;gap:14px;transition:background .3s,border-color .3s;}
 .hdr-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;letter-spacing:-.02em;white-space:nowrap;cursor:pointer;user-select:none;}
+.hdr-logo-text{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;letter-spacing:-.02em;}
 .hdr-logo:hover span{text-decoration:underline;text-decoration-style:dotted;}
 .hdr-logo span{color:var(--accent);font-style:italic;}
 .hdr-prog{flex:1;display:none;align-items:center;gap:12px;}
@@ -303,6 +304,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .footer-link:hover{background:var(--accent);color:#1a1814;}
 [data-theme="dark"] .footer-link:hover{color:#0f0f12;}
 .footer-note{font-size:.7rem;color:var(--muted2);line-height:1.6;}
+.footer-url{font-size:.82rem;font-weight:600;color:var(--accent);margin-bottom:20px;letter-spacing:.01em;}
 
 .why-problems{margin-bottom:48px;}
 .why-problems-title,.why-solutions-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;letter-spacing:-.01em;margin-bottom:16px;color:var(--text);}
@@ -358,7 +360,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 </div>
 
 <header class="hdr">
-  <div class="hdr-logo" onclick="goHome()" style="cursor:pointer;user-select:none;" title="← Home">Compass<span>.</span></div>
+  <div class="hdr-logo" onclick="goHome()" style="cursor:pointer;user-select:none;display:flex;align-items:center;gap:9px;" title="← Home"><svg width="32" height="32" viewBox="-58 -58 116 116" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;flex-shrink:0">
+  <circle cx="0" cy="0" r="54" fill="none" stroke="#1a1814" stroke-width="5"/>
+  <circle cx="0" cy="0" r="48" fill="white"/>
+  <polygon points="0,-32 -7.5,-4 7.5,-4" fill="#e8c547"/>
+  <polygon points="0,32 -7.5,4 7.5,4" fill="#c83828"/>
+  <circle cx="0" cy="0" r="6" fill="#1a1814"/>
+  <circle cx="0" cy="0" r="3" fill="#e8c547"/>
+</svg><span class="hdr-logo-text">FindMyPolitics</span></div>
   <div class="hdr-prog" id="hdrProg">
     <div class="hdr-track"><div class="hdr-fill" id="hdrFill"></div></div>
     <div class="hdr-count" id="hdrCount"></div>
@@ -377,7 +386,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 <div class="land">
   <div class="land-bg"></div><div class="land-grid"></div>
   <div class="land-inner fu">
-    <div class="eyebrow">Political Alignment Test</div>
+    <div style="display:flex;justify-content:center;margin-bottom:20px;"><svg width="52" height="52" viewBox="-58 -58 116 116" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;flex-shrink:0">
+  <circle cx="0" cy="0" r="54" fill="none" stroke="#1a1814" stroke-width="5"/>
+  <circle cx="0" cy="0" r="48" fill="white"/>
+  <polygon points="0,-32 -7.5,-4 7.5,-4" fill="#e8c547"/>
+  <polygon points="0,32 -7.5,4 7.5,4" fill="#c83828"/>
+  <circle cx="0" cy="0" r="6" fill="#1a1814"/>
+  <circle cx="0" cy="0" r="3" fill="#e8c547"/>
+</svg></div>
+    <div class="eyebrow">findmypolitics.com</div>
     <h1>Find out where you <em>really</em> stand.</h1>
     <p class="land-sub">A political test that tells you something you don't already know. Five dimensions, plain-English results, and no agenda.</p>
     <div class="pills">
@@ -426,7 +443,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 <div class="why-section">
   <div class="why-inner">
 
-    <div class="why-eyebrow">Why we built this</div>
+    <div class="why-eyebrow">Why we built findmypolitics.com</div>
     <h2 class="why-h">The original Political Compass has real problems.<br>Here's what we did about it.</h2>
     <p class="why-sub">The Political Compass test has been around since 2001. Millions of people have taken it. It's also been systematically criticized by political scientists, researchers, and journalists for more than two decades. We read those criticisms and built something better.</p>
 
@@ -504,7 +521,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
     <div class="why-nonpartisan">
       <div class="why-np-title">A note on non-partisanship</div>
-      <div class="why-np-body">This test was built with the goal of helping people understand their own political values — not to push them toward any particular conclusion. The question set is mathematically balanced (verifiable by inspecting the source code). Questions are framed using the strongest version of both sides' arguments. Results describe ideological traditions as they actually exist, not as caricatures. If you find a question you believe is biased, the contact information below is genuine — feedback is taken seriously.</div>
+      <div class="why-np-body">This test was built with the goal of helping people understand their own political values — not to push them toward any particular conclusion. The question set is mathematically balanced (verifiable by inspecting the source code). Questions are framed using the strongest version of both sides' arguments. Results describe ideological traditions as they actually exist, not as caricatures. If you find a question you believe is biased, the contact information below is genuine — feedback on findmypolitics.com is taken seriously.</div>
     </div>
 
     <div class="why-cta">
@@ -516,8 +533,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-logo">Compass<span>.</span></div>
-    <p class="footer-tagline">Know where you stand</p>
+    <div class="footer-logo" style="display:flex;align-items:center;justify-content:center;gap:10px;"><svg width="32" height="32" viewBox="-58 -58 116 116" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;flex-shrink:0">
+  <circle cx="0" cy="0" r="54" fill="none" stroke="#1a1814" stroke-width="5"/>
+  <circle cx="0" cy="0" r="48" fill="white"/>
+  <polygon points="0,-32 -7.5,-4 7.5,-4" fill="#e8c547"/>
+  <polygon points="0,32 -7.5,4 7.5,4" fill="#c83828"/>
+  <circle cx="0" cy="0" r="6" fill="#1a1814"/>
+  <circle cx="0" cy="0" r="3" fill="#e8c547"/>
+</svg><span>FindMyPolitics<span>.</span></span></div>
+    <p class="footer-tagline">Built because the existing ones are kind of broken.</p>
     <div class="footer-contact">
       <div class="footer-contact-title">Get in touch</div>
       <div class="footer-links">
@@ -642,7 +666,17 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
         <div class="share-card" id="shareCard">
           <div class="share-card-glow"></div>
           <div class="share-card-glow2"></div>
-          <div class="sc-site" style="position:relative;z-index:1">findmypolitics.com</div>
+          <div style="position:relative;z-index:1;display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+          <svg width="28" height="28" viewBox="-58 -58 116 116" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+  <circle cx="0" cy="0" r="54" fill="none" stroke="white" stroke-width="5"/>
+  <circle cx="0" cy="0" r="48" fill="rgba(255,255,255,0.15)"/>
+  <polygon points="0,-32 -7.5,-4 7.5,-4" fill="#e8c547"/>
+  <polygon points="0,32 -7.5,4 7.5,4" fill="#c83828"/>
+  <circle cx="0" cy="0" r="6" fill="white"/>
+  <circle cx="0" cy="0" r="3" fill="#e8c547"/>
+</svg>
+          <span class="sc-site">FindMyPolitics</span>
+        </div>
           <div class="sc-ideology" style="position:relative;z-index:1" id="scIdeo"></div>
           <div class="sc-spectrum" style="position:relative;z-index:1" id="scSpectrum"></div>
           <div class="sc-bars" style="position:relative;z-index:1" id="scBars"></div>
@@ -1651,7 +1685,7 @@ function renderShareCard(s){
 
 function copyRes(){
   const s=calcS(),best=bestIdeo(s);
-  const txt=`My Political Compass Results\nTest: ${MODES[mode].label}\nClosest Ideology: ${best.n}\n\n${best.def}\n\n`+
+  const txt=`Find My Politics Results — findmypolitics.com\nTest: ${MODES[mode].label}\nClosest Ideology: ${best.n}\n\n${best.def}\n\n`+
     Object.entries(s).map(([ax,v])=>{const m=AXES[ax];return`${m.icon} ${m.label}: ${Math.abs(v)}% ${v>=0?m.rightShort:m.leftShort}`;}).join('\n');
   navigator.clipboard.writeText(txt).then(()=>{
     const btn=document.querySelector('.sbtn');
@@ -1669,7 +1703,7 @@ function copyRes(){
 }
 function shareTw(){
   const s=calcS(),best=bestIdeo(s);
-  const txt=encodeURIComponent(`I took a political compass test — my closest ideology: ${best.n}\n\n${TAGLINES[best.n]||''}`);
+  const txt=encodeURIComponent(`I took the Find My Politics test (findmypolitics.com) — my closest ideology: ${best.n}\n\n${TAGLINES[best.n]||''}`);
   window.open(`https://twitter.com/intent/tweet?text=${txt}`,'_blank');
 }
 </script>
