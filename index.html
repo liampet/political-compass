@@ -1349,8 +1349,8 @@ function showFullResults(){
 function buildOneLiner(s){
   const e=s.econ<-20?tip('economically left-wing',GLOSS['left-wing']):s.econ>20?tip('economically right-wing',GLOSS['right-wing']):'economically centrist';
   const so=s.social<-20?tip('socially libertarian',GLOSS['libertarian']):s.social>20?tip('socially authoritarian',GLOSS['authoritarian']):'socially moderate';
-  const tr=s.system>25?'you broadly trust democratic institutions':s.system<-25?'you\'re skeptical of mainstream institutions':'you have mixed trust in institutions';
-  const g=s.gov>25?`you lean ${tip('globalist',GLOSS['globalist'])} on foreign policy`:s.gov<-25?`you lean ${tip('nationalist',GLOSS['nationalist'])} on foreign policy`:'you balance national and global interests';
+  const tr=s.system<-25?'you broadly trust democratic institutions':s.system>25?'you\'re skeptical of mainstream institutions':'you have mixed trust in institutions';
+  const g=s.gov<-25?`you lean ${tip('globalist',GLOSS['globalist'])} on foreign policy`:s.gov>25?`you lean ${tip('nationalist',GLOSS['nationalist'])} on foreign policy`:'you balance national and global interests';
   return `You are ${e} and ${so}, and ${tr}. ${g.charAt(0).toUpperCase()+g.slice(1)}.`;
 }
 
