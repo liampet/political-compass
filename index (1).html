@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Compass — Political Alignment Test</title>
-<meta name="description" content="Find out where you actually stand politically. 3 test lengths, 5 dimensions, plain-English results.">
+<title>Find My Politics — Political Alignment Test</title>
+<meta name="description" content="Find My Politics — a political alignment test that actually tells you something. 5 dimensions, plain-English results, no agenda.">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap');
 
 [data-theme="light"]{
   --bg:#f7f5f0;--bg2:#eeece6;--surface:#fff;--surface2:#f3f1eb;
@@ -33,11 +33,12 @@
 
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;transition:background .3s,color .3s;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;transition:background .3s,color .3s;}
 
 /* HEADER */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;background:var(--hdr-bg);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;gap:14px;transition:background .3s,border-color .3s;}
-.hdr-logo{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;letter-spacing:-.02em;white-space:nowrap;cursor:pointer;user-select:none;}
+.hdr-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;letter-spacing:-.02em;white-space:nowrap;cursor:pointer;user-select:none;}
+.hdr-logo-text{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;letter-spacing:-.02em;}
 .hdr-logo:hover span{text-decoration:underline;text-decoration-style:dotted;}
 .hdr-logo span{color:var(--accent);font-style:italic;}
 .hdr-prog{flex:1;display:none;align-items:center;gap:12px;}
@@ -48,7 +49,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .hdr-right{margin-left:auto;display:flex;align-items:center;gap:8px;}
 .theme-toggle{background:var(--surface2);border:1px solid var(--border2);color:var(--muted);font-size:.85rem;width:34px;height:34px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;}
 .theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
-.hdr-back{background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:500;padding:6px 13px;border-radius:6px;cursor:pointer;transition:all .15s;display:none;}
+.hdr-back{background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;padding:6px 13px;border-radius:6px;cursor:pointer;transition:all .15s;display:none;}
 .hdr-back:hover{color:var(--text);border-color:var(--muted2);}
 
 .sec{display:none;padding-top:58px;min-height:100vh;}
@@ -60,8 +61,8 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .land-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:56px 56px;opacity:.5;mask-image:radial-gradient(ellipse 75% 70% at 50% 40%,black 0%,transparent 70%);}
 .land-inner{position:relative;z-index:1;max-width:820px;width:100%;}
 .eyebrow{display:inline-flex;align-items:center;gap:7px;background:var(--accent-bg);border:1px solid var(--accent-border);color:var(--accent);font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:5px 13px;border-radius:20px;margin-bottom:24px;}
-.eyebrow::before{content:'◆';font-size:.42rem;}
-.land h1{font-family:'Fraunces',serif;font-size:clamp(2.5rem,7vw,4.8rem);font-weight:700;line-height:1.06;letter-spacing:-.035em;margin-bottom:20px;}
+.eyebrow::before{content:''}
+.land h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,7vw,4.8rem);font-weight:700;line-height:1.06;letter-spacing:-.035em;margin-bottom:20px;}
 .land h1 em{font-style:italic;color:var(--accent);}
 .land-sub{font-size:clamp(.9rem,2vw,1.08rem);color:var(--muted);line-height:1.72;max-width:490px;margin:0 auto 44px;}
 .pills{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:48px;}
@@ -72,7 +73,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .pc{background:var(--civil-bg);border-color:var(--civil);color:var(--civil);}.pc .pdot{background:var(--civil);}
 .pg{background:var(--gov-bg);border-color:var(--gov);color:var(--gov);}.pg .pdot{background:var(--gov);}
 .psy{background:var(--system-bg);border-color:var(--system);color:var(--system);}.psy .pdot{background:var(--system);}
-.mode-hdg{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:16px;}
+.mode-hdg{font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:16px;}
 .mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px;}
 .mc{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:24px 20px 20px;cursor:pointer;text-align:left;transition:all .2s;box-shadow:0 2px 8px var(--shadow);}
 .mc:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 28px var(--shadow2);}
@@ -81,12 +82,12 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .bq{background:var(--civil-bg);color:var(--civil);}
 .bm{background:var(--accent-bg);color:var(--accent);}
 .bd{background:var(--system-bg);color:var(--system);}
-.mcount{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:3px;}
+.mcount{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:3px;}
 .mqlbl{font-size:.68rem;color:var(--muted);font-weight:500;margin-bottom:12px;}
-.mname{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;margin-bottom:7px;letter-spacing:-.01em;}
+.mname{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;margin-bottom:7px;letter-spacing:-.01em;}
 .mdesc{font-size:.78rem;color:var(--muted);line-height:1.58;}
 .mtime{font-size:.67rem;color:var(--muted2);margin-top:12px;}.mtime::before{content:'⏱ ';}
-.msbtn{width:100%;margin-top:16px;background:var(--surface2);border:1px solid var(--border2);color:var(--text);font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;padding:10px;border-radius:7px;cursor:pointer;transition:all .15s;}
+.msbtn{width:100%;margin-top:16px;background:var(--surface2);border:1px solid var(--border2);color:var(--text);font-family:'Inter',sans-serif;font-size:.8rem;font-weight:600;padding:10px;border-radius:7px;cursor:pointer;transition:all .15s;}
 .mc:hover .msbtn,.mc.star .msbtn{background:var(--accent);color:#1a1814;border-color:var(--accent);}
 [data-theme="dark"] .mc:hover .msbtn,[data-theme="dark"] .mc.star .msbtn{color:#0f0f12;}
 .land-note{font-size:.7rem;color:var(--muted2);}
@@ -97,26 +98,26 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .qcat{display:flex;align-items:center;gap:7px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);}
 .qcdot{width:8px;height:8px;border-radius:50%;}
 .qnum{font-size:.68rem;color:var(--muted2);font-weight:500;}
-.qtext{font-family:'Fraunces',serif;font-size:clamp(1.28rem,3vw,1.82rem);font-weight:400;line-height:1.42;letter-spacing:-.02em;margin-bottom:36px;min-height:68px;}
+.qtext{font-family:'Playfair Display',serif;font-size:clamp(1.28rem,3vw,1.82rem);font-weight:400;line-height:1.42;letter-spacing:-.02em;margin-bottom:36px;min-height:68px;}
 .shdr{display:flex;justify-content:space-between;font-size:.67rem;color:var(--muted2);margin-bottom:9px;padding:0 1px;}
 .srow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:30px;}
-.sopt{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:14px 7px 12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:'Outfit',sans-serif;font-size:.74rem;font-weight:500;color:var(--muted);text-align:center;line-height:1.3;transition:all .13s;box-shadow:0 1px 4px var(--shadow);}
+.sopt{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:14px 7px 12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:.74rem;font-weight:500;color:var(--muted);text-align:center;line-height:1.3;transition:all .13s;box-shadow:0 1px 4px var(--shadow);}
 .sopt:hover{border-color:var(--border2);color:var(--text);background:var(--surface2);}
 .sopt.on{border-color:var(--accent);background:var(--accent-bg);color:var(--accent);}
 .spip{width:10px;height:10px;border-radius:50%;border:2px solid var(--border2);transition:all .13s;}
 .sopt:hover .spip{border-color:var(--muted2);}
 .sopt.on .spip{background:var(--accent);border-color:var(--accent);}
 .qnav{display:flex;align-items:center;justify-content:space-between;}
-.bbk{background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:'Outfit',sans-serif;font-size:.83rem;font-weight:500;padding:11px 22px;border-radius:7px;cursor:pointer;transition:all .13s;}
+.bbk{background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:'Inter',sans-serif;font-size:.83rem;font-weight:500;padding:11px 22px;border-radius:7px;cursor:pointer;transition:all .13s;}
 .bbk:hover{color:var(--text);border-color:var(--muted2);}
 .bbk:disabled{opacity:.25;cursor:default;}
-.bnx{background:var(--accent);color:#1a1814;border:none;font-family:'Outfit',sans-serif;font-size:.83rem;font-weight:700;padding:11px 28px;border-radius:7px;cursor:pointer;transition:all .17s;}
+.bnx{background:var(--accent);color:#1a1814;border:none;font-family:'Inter',sans-serif;font-size:.83rem;font-weight:700;padding:11px 28px;border-radius:7px;cursor:pointer;transition:all .17s;}
 [data-theme="dark"] .bnx{color:#0f0f12;}
 .bnx:hover:not(:disabled){filter:brightness(1.1);transform:translateY(-1px);}
 .bnx:disabled{opacity:.28;cursor:default;}
 .qhint{font-size:.67rem;color:var(--muted2);text-align:center;margin-top:13px;}
 .q-ctx-btn{background:var(--surface2);border:1px solid var(--border2);color:var(--muted);
-  font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:600;
+  font-family:'Inter',sans-serif;font-size:.75rem;font-weight:600;
   padding:6px 14px;border-radius:20px;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:5px;}
 .q-ctx-btn:hover{border-color:var(--accent);color:var(--accent);}
 .q-ctx-box{margin-top:10px;background:var(--surface2);border:1px solid var(--border);
@@ -128,7 +129,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .reveal-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,var(--accent-bg) 0%,transparent 65%);}
 .reveal-content{position:relative;z-index:1;max-width:660px;width:100%;}
 .reveal-eyebrow{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:20px;opacity:0;transform:translateY(10px);}
-.reveal-name{font-family:'Fraunces',serif;font-size:clamp(2.4rem,8vw,5rem);font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--accent);font-style:italic;margin-bottom:16px;opacity:0;transform:translateY(20px) scale(.95);}
+.reveal-name{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,8vw,5rem);font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--accent);font-style:italic;margin-bottom:16px;opacity:0;transform:translateY(20px) scale(.95);}
 .reveal-tagline{font-size:clamp(1rem,2.5vw,1.2rem);color:var(--muted);line-height:1.65;max-width:480px;margin:0 auto 36px;opacity:0;transform:translateY(10px);}
 .reveal-axes{display:flex;flex-direction:column;gap:12px;margin-bottom:40px;text-align:left;}
 /* Each axis row: icon + name + chip verdict on top row, bar with end labels below */
@@ -146,7 +147,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .rev-bar-center-line{position:absolute;left:50%;top:-2px;bottom:-2px;width:2px;background:var(--border2);border-radius:1px;}
 .rev-bar-fill{position:absolute;height:100%;border-radius:5px;transition:width .9s cubic-bezier(.34,1.3,.64,1);}
 .rev-bar-marker{position:absolute;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;border:3px solid var(--surface);box-shadow:0 1px 5px rgba(0,0,0,.2);transition:left .9s cubic-bezier(.34,1.3,.64,1);}
-.reveal-cta{background:var(--accent);color:#1a1814;border:none;font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;padding:14px 36px;border-radius:8px;cursor:pointer;transition:all .2s;opacity:0;transform:translateY(10px);}
+.reveal-cta{background:var(--accent);color:#1a1814;border:none;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;padding:14px 36px;border-radius:8px;cursor:pointer;transition:all .2s;opacity:0;transform:translateY(10px);}
 [data-theme="dark"] .reveal-cta{color:#0f0f12;}
 .reveal-cta:hover{filter:brightness(1.1);transform:translateY(-1px);}
 
@@ -154,8 +155,8 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .rwrap{max-width:920px;margin:0 auto;padding:44px 24px 100px;}
 .res-hero{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:36px 32px;margin-bottom:20px;box-shadow:0 2px 12px var(--shadow);position:relative;overflow:hidden;}
 .res-hero::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,var(--accent-bg) 0%,transparent 65%);}
-.res-over{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px;}
-.res-ideo-name{font-family:'Fraunces',serif;font-size:clamp(1.9rem,5vw,2.8rem);font-weight:700;letter-spacing:-.03em;color:var(--accent);font-style:italic;margin-bottom:10px;}
+.res-over{font-size:.78rem;font-weight:500;color:var(--muted);margin-bottom:10px;}
+.res-ideo-name{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,5vw,2.8rem);font-weight:700;letter-spacing:-.03em;color:var(--accent);font-style:italic;margin-bottom:10px;}
 .res-spectrum{display:inline-flex;align-items:center;gap:7px;font-size:.75rem;font-weight:700;color:var(--muted);margin-bottom:14px;padding:5px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;}
 .res-spectrum::before{content:'📍';font-size:.8rem;}
 .res-ideo-plain{font-size:1rem;color:var(--muted);line-height:1.7;max-width:640px;margin-bottom:12px;}
@@ -165,15 +166,15 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 
 .rg{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
 .rf{grid-column:1/-1;}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;box-shadow:0 1px 6px var(--shadow);}
-.ct{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:18px;display:flex;align-items:center;gap:7px;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;box-shadow:0 1px 6px var(--shadow);}
+.ct{font-size:.75rem;font-weight:600;color:var(--muted);margin-bottom:18px;display:flex;align-items:center;gap:7px;}
 .ctd{width:6px;height:6px;border-radius:50%;}
 
 /* POLITICAL COMPASS */
 .compass-outer{position:relative;width:100%;max-width:500px;margin:0 auto;}
 #compassCanvas{display:block;width:100%;height:auto;border-radius:8px;cursor:crosshair;}
 .compass-intro{font-size:.82rem;color:var(--muted);line-height:1.65;margin-bottom:16px;}
-.compass-hover-tip{display:none;position:fixed;background:var(--surface);border:1px solid var(--border2);color:var(--text);font-size:.78rem;padding:7px 12px;border-radius:7px;pointer-events:none;z-index:9999;font-family:'Outfit',sans-serif;box-shadow:0 4px 14px var(--shadow2);font-weight:600;}
+.compass-hover-tip{display:none;position:fixed;background:var(--surface);border:1px solid var(--border2);color:var(--text);font-size:.78rem;padding:7px 12px;border-radius:7px;pointer-events:none;z-index:9999;font-family:'Inter',sans-serif;box-shadow:0 4px 14px var(--shadow2);font-weight:600;}
 
 /* FIGURES TABLE (below compass) */
 .fig-table-wrap{margin-top:20px;}
@@ -220,18 +221,18 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 .ideo-note{font-size:.74rem;color:var(--muted);margin-top:12px;line-height:1.5;}
 
 /* COMMUNITY */
-.cg3x{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:16px;}
+.cg3x{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:20px;}
 .ccard{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:13px;text-align:center;}
-.cnum{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;letter-spacing:-.02em;margin-bottom:2px;}
+.cnum{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;letter-spacing:-.02em;margin-bottom:2px;}
 .clbl{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600;}
-.ctbl{width:100%;border-collapse:collapse;}
-.ctbl th{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted2);padding:0 6px 9px;text-align:left;}
-.ctbl td{font-size:.78rem;padding:8px 6px;border-top:1px solid var(--border);vertical-align:middle;}
-.cflag{font-size:.95rem;margin-right:4px;}
-.cnm{font-weight:500;}
-.mb{width:66px;height:5px;background:var(--border);border-radius:3px;overflow:hidden;display:inline-block;vertical-align:middle;}
-.mbf{height:100%;border-radius:3px;}
-.yrow td{color:var(--accent);font-weight:700;}
+.country-group-title{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted2);margin-bottom:8px;margin-top:16px;}
+.country-row-set{display:flex;flex-direction:column;gap:6px;}
+.country-row{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;}
+.country-flag-big{font-size:1.4rem;flex-shrink:0;}
+.country-row-name{font-size:.88rem;font-weight:600;flex:1;}
+.country-row-desc{font-size:.72rem;color:var(--muted);line-height:1.4;}
+.country-row-pct{font-size:.75rem;font-weight:700;padding:3px 9px;border-radius:10px;flex-shrink:0;white-space:nowrap;}
+.country-divider{height:1px;background:var(--border);margin:12px 0;}
 
 /* SIMILAR FIGURES TABLE */
 .fig-sim-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
@@ -243,22 +244,22 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 
 /* SHARE */
 .spr{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:26px;margin-bottom:14px;box-shadow:0 1px 6px var(--shadow);}
-.splbl{font-family:'Fraunces',serif;font-size:.75rem;color:var(--muted);margin-bottom:4px;}
-.spid{font-family:'Fraunces',serif;font-size:1.45rem;font-weight:700;color:var(--accent);letter-spacing:-.02em;font-style:italic;margin-bottom:14px;}
+.splbl{font-family:'Playfair Display',serif;font-size:.75rem;color:var(--muted);margin-bottom:4px;}
+.spid{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:var(--accent);letter-spacing:-.02em;font-style:italic;margin-bottom:14px;}
 .sppills{display:flex;flex-wrap:wrap;gap:6px;}
 .sppill{font-size:.68rem;font-weight:600;padding:4px 10px;border-radius:9px;border:1px solid;}
 .sbtns{display:flex;gap:9px;flex-wrap:wrap;}
-.sbtn{background:var(--surface2);border:1px solid var(--border2);color:var(--text);font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:500;padding:9px 16px;border-radius:7px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .14s;}
+.sbtn{background:var(--surface2);border:1px solid var(--border2);color:var(--text);font-family:'Inter',sans-serif;font-size:.8rem;font-weight:500;padding:9px 16px;border-radius:7px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .14s;}
 .sbtn:hover{border-color:var(--accent);color:var(--accent);}
-.sbtn-mode{background:transparent;border:1px solid var(--accent-border);color:var(--accent);font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;padding:9px 16px;border-radius:7px;cursor:pointer;transition:all .14s;}
+.sbtn-mode{background:transparent;border:1px solid var(--accent-border);color:var(--accent);font-family:'Inter',sans-serif;font-size:.8rem;font-weight:600;padding:9px 16px;border-radius:7px;cursor:pointer;transition:all .14s;}
 .sbtn-mode:hover{background:var(--accent-bg);}
-.sbtn-rt{background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:500;padding:9px 16px;border-radius:7px;cursor:pointer;transition:all .14s;}
+.sbtn-rt{background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:'Inter',sans-serif;font-size:.8rem;font-weight:500;padding:9px 16px;border-radius:7px;cursor:pointer;transition:all .14s;}
 .sbtn-rt:hover{color:var(--text);border-color:var(--muted2);}
 .rnote{font-size:.68rem;color:var(--muted2);line-height:1.6;margin-top:14px;padding-top:16px;border-top:1px solid var(--border);}
 
 /* TOOLTIPS */
 .tip{display:inline;position:relative;border-bottom:1.5px dotted var(--accent);cursor:help;color:inherit;}
-.tip-box{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border2);color:var(--text);font-size:.76rem;font-weight:400;line-height:1.5;padding:9px 13px;border-radius:8px;white-space:normal;width:230px;z-index:999;box-shadow:0 4px 16px var(--shadow2);pointer-events:none;font-family:'Outfit',sans-serif;}
+.tip-box{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border2);color:var(--text);font-size:.76rem;font-weight:400;line-height:1.5;padding:9px 13px;border-radius:8px;white-space:normal;width:230px;z-index:999;box-shadow:0 4px 16px var(--shadow2);pointer-events:none;font-family:'Inter',sans-serif;}
 .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--border2);}
 .tip:hover .tip-box{display:block;}
 .tip-box.tl{left:0;transform:none;}.tip-box.tl::after{left:20px;}
@@ -267,8 +268,77 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 @keyframes fu{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
 .fu{animation:fu .45s ease both;}.fu2{animation:fu .45s .08s ease both;}.fu3{animation:fu .45s .16s ease both;}
 
-@media(max-width:700px){.rg{grid-template-columns:1fr;}.mode-grid{grid-template-columns:1fr;}.cg3x{grid-template-columns:1fr 1fr;}.hdr{padding:0 14px;}.fig-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:860px) and (min-width:501px){.mode-grid{grid-template-columns:1fr 1fr;}}
+/* ── SCROLL HINT ── */
+.scroll-hint{font-size:.75rem;color:var(--muted2);margin-top:28px;letter-spacing:.03em;}
+.scroll-hint-arrow{display:block;animation:bounce 2s infinite;margin-top:4px;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+/* ── WHY SECTION ── */
+.why-section{background:var(--bg2);border-top:1px solid var(--border);padding:80px 24px 72px;}
+.why-inner{max-width:900px;margin:0 auto;}
+.why-eyebrow{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:12px;}
+.why-h{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.5rem);font-weight:700;letter-spacing:-.03em;margin-bottom:14px;line-height:1.15;}
+.why-sub{font-size:.95rem;color:var(--muted);line-height:1.72;max-width:620px;margin-bottom:44px;}
+.why-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:44px;}
+.why-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;box-shadow:0 1px 6px var(--shadow);display:flex;flex-direction:column;}
+.why-icon{font-size:1.4rem;margin-bottom:10px;}
+.why-card-title{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;letter-spacing:-.01em;margin-bottom:9px;}
+.why-card-body{font-size:.78rem;color:var(--muted);line-height:1.65;margin-bottom:14px;flex:1;}
+.why-compare{display:flex;flex-direction:column;gap:5px;}
+.why-old{font-size:.67rem;font-weight:600;color:var(--muted2);padding:3px 8px;background:var(--surface2);border-radius:5px;display:inline-block;width:fit-content;}
+.why-new{font-size:.67rem;font-weight:700;color:var(--civil);padding:3px 8px;background:var(--civil-bg);border-radius:5px;display:inline-block;width:fit-content;}
+.why-cta{text-align:center;}
+.btn-primary-why{background:var(--accent);color:#1a1814;border:none;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;padding:14px 40px;border-radius:8px;cursor:pointer;transition:all .2s;}
+.btn-primary-why:hover{filter:brightness(1.1);transform:translateY(-1px);}
+[data-theme="dark"] .btn-primary-why{color:#0f0f12;}
+
+/* ── FOOTER ── */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:52px 24px 44px;}
+.footer-inner{max-width:900px;margin:0 auto;text-align:center;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;}
+.footer-logo span{color:var(--accent);font-style:italic;}
+.footer-tagline{font-size:.82rem;color:var(--muted);margin-bottom:32px;}
+.footer-contact-title{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2);margin-bottom:12px;}
+.footer-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
+.footer-link{font-size:.88rem;font-weight:500;color:var(--accent);text-decoration:none;padding:9px 20px;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:8px;transition:all .15s;}
+.footer-link:hover{background:var(--accent);color:#1a1814;}
+[data-theme="dark"] .footer-link:hover{color:#0f0f12;}
+.footer-note{font-size:.7rem;color:var(--muted2);line-height:1.6;}
+.footer-url{font-size:.82rem;font-weight:600;color:var(--accent);margin-bottom:20px;letter-spacing:.01em;}
+
+.why-problems{margin-bottom:48px;}
+.why-problems-title,.why-solutions-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;letter-spacing:-.01em;margin-bottom:16px;color:var(--text);}
+.why-problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.why-problem-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;box-shadow:0 1px 6px var(--shadow);}
+.why-problem-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--social);opacity:.4;line-height:1;margin-bottom:8px;}
+.why-problem-title{font-weight:700;font-size:.9rem;margin-bottom:8px;}
+.why-problem-body{font-size:.78rem;color:var(--muted);line-height:1.65;margin-bottom:10px;}
+.why-source{font-size:.67rem;color:var(--muted2);line-height:1.5;font-style:italic;padding-top:8px;border-top:1px solid var(--border);}
+.why-divider{height:1px;background:var(--border);margin:40px 0;}
+.why-nonpartisan{background:var(--surface);border:1px solid var(--accent-border);border-radius:12px;padding:24px;margin-top:32px;margin-bottom:36px;}
+.why-np-title{font-weight:700;font-size:.88rem;color:var(--accent);margin-bottom:8px;}
+.why-np-body{font-size:.8rem;color:var(--muted);line-height:1.68;}
+
+/* ── SCREENSHOT SHARE CARD ── */
+.share-card-wrap{margin-bottom:16px;}
+.share-card{background:linear-gradient(135deg,#0d0d14 0%,#12121e 50%,#0d0d14 100%);border-radius:16px;padding:32px;position:relative;overflow:hidden;}
+[data-theme="light"] .share-card{background:linear-gradient(135deg,#1a1830 0%,#1e1a38 50%,#1a1830 100%);}
+.share-card-glow{position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(200,135,42,.25) 0%,transparent 65%);}
+.share-card-glow2{position:absolute;bottom:-30px;left:-30px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(91,141,238,.15) 0%,transparent 65%);}
+.sc-site{font-family:'Inter',sans-serif;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-bottom:16px;}
+.sc-ideology{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,5vw,2.4rem);font-weight:700;color:#e8c547;font-style:italic;letter-spacing:-.02em;line-height:1.1;margin-bottom:6px;}
+.sc-spectrum{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:20px;letter-spacing:.04em;}
+.sc-bars{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.sc-bar-row{display:flex;align-items:center;gap:10px;}
+.sc-bar-label{font-size:.68rem;font-weight:600;color:rgba(255,255,255,.5);width:88px;flex-shrink:0;}
+.sc-bar-track{flex:1;height:5px;background:rgba(255,255,255,.1);border-radius:3px;position:relative;}
+.sc-bar-mid{position:absolute;left:50%;top:-1px;bottom:-1px;width:1px;background:rgba(255,255,255,.2);}
+.sc-bar-fill{position:absolute;height:100%;border-radius:3px;}
+.sc-bar-val{font-size:.68rem;font-weight:700;width:80px;text-align:right;flex-shrink:0;}
+.sc-url{font-size:.65rem;color:rgba(255,255,255,.3);margin-top:16px;letter-spacing:.04em;}
+
+@media(max-width:700px){.why-problem-grid{grid-template-columns:1fr;}.rg{grid-template-columns:1fr;}.mode-grid{grid-template-columns:1fr;}.cg3x{grid-template-columns:1fr 1fr;}.hdr{padding:0 14px;}.fig-grid{grid-template-columns:1fr 1fr;}.why-grid{grid-template-columns:1fr;}}
+@media(max-width:860px) and (min-width:501px){.mode-grid{grid-template-columns:1fr 1fr;}.why-grid{grid-template-columns:1fr 1fr;}.why-problem-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:500px){.srow{gap:5px;}.sopt{padding:10px 3px 8px;font-size:.68rem;}}
 </style>
 </head>
@@ -280,17 +350,24 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 <!-- CONFIRM MODAL -->
 <div id="confirmOverlay" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;">
   <div style="background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:28px 28px 22px;max-width:360px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,.3);">
-    <div id="confirmTitle" style="font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;"></div>
+    <div id="confirmTitle" style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;"></div>
     <div id="confirmBody" style="font-size:.88rem;color:var(--muted);line-height:1.55;margin-bottom:22px;"></div>
     <div style="display:flex;gap:10px;justify-content:flex-end;">
-      <button id="confirmNo" style="background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:500;padding:9px 20px;border-radius:7px;cursor:pointer;">Cancel</button>
-      <button id="confirmYes" style="background:var(--accent);color:#1a1814;border:none;font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:700;padding:9px 20px;border-radius:7px;cursor:pointer;">Yes, go home</button>
+      <button id="confirmNo" style="background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:'Inter',sans-serif;font-size:.85rem;font-weight:500;padding:9px 20px;border-radius:7px;cursor:pointer;">Cancel</button>
+      <button id="confirmYes" style="background:var(--accent);color:#1a1814;border:none;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:700;padding:9px 20px;border-radius:7px;cursor:pointer;">Yes, go home</button>
     </div>
   </div>
 </div>
 
 <header class="hdr">
-  <div class="hdr-logo" onclick="goHome()" style="cursor:pointer;user-select:none;" title="← Home">Compass<span>.</span></div>
+  <div class="hdr-logo" onclick="goHome()" style="cursor:pointer;user-select:none;display:flex;align-items:center;gap:9px;" title="← Home"><svg width="32" height="32" viewBox="-58 -58 116 116" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;flex-shrink:0">
+  <circle cx="0" cy="0" r="54" fill="none" stroke="#1a1814" stroke-width="5"/>
+  <circle cx="0" cy="0" r="48" fill="white"/>
+  <polygon points="0,-32 -7.5,-4 7.5,-4" fill="#e8c547"/>
+  <polygon points="0,32 -7.5,4 7.5,4" fill="#c83828"/>
+  <circle cx="0" cy="0" r="6" fill="#1a1814"/>
+  <circle cx="0" cy="0" r="3" fill="#e8c547"/>
+</svg><span class="hdr-logo-text">FindMyPolitics</span></div>
   <div class="hdr-prog" id="hdrProg">
     <div class="hdr-track"><div class="hdr-fill" id="hdrFill"></div></div>
     <div class="hdr-count" id="hdrCount"></div>
@@ -304,18 +381,28 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 
 <!-- LANDING -->
 <section class="sec on" id="secLand">
+
+<!-- HERO -->
 <div class="land">
   <div class="land-bg"></div><div class="land-grid"></div>
   <div class="land-inner fu">
-    <div class="eyebrow">Political Self-Knowledge</div>
-    <h1>Where do you <em>actually</em> stand?</h1>
-    <p class="land-sub">Five clear dimensions. Three test lengths. Plain-English results — then see how you compare to people and figures around the world.</p>
+    <div style="display:flex;justify-content:center;margin-bottom:20px;"><svg width="52" height="52" viewBox="-58 -58 116 116" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;flex-shrink:0">
+  <circle cx="0" cy="0" r="54" fill="none" stroke="#1a1814" stroke-width="5"/>
+  <circle cx="0" cy="0" r="48" fill="white"/>
+  <polygon points="0,-32 -7.5,-4 7.5,-4" fill="#e8c547"/>
+  <polygon points="0,32 -7.5,4 7.5,4" fill="#c83828"/>
+  <circle cx="0" cy="0" r="6" fill="#1a1814"/>
+  <circle cx="0" cy="0" r="3" fill="#e8c547"/>
+</svg></div>
+    <div class="eyebrow">findmypolitics.com</div>
+    <h1>Find out where you <em>really</em> stand.</h1>
+    <p class="land-sub">A political test that tells you something you don't already know. Five dimensions, plain-English results, and no agenda.</p>
     <div class="pills">
-      <div class="pill pe"><div class="pdot"></div>💰 Economic</div>
-      <div class="pill ps"><div class="pdot"></div>🏛 Social</div>
-      <div class="pill pc"><div class="pdot"></div>⚖️ Civil Liberties</div>
-      <div class="pill pg"><div class="pdot"></div>🌍 Governance</div>
-      <div class="pill psy"><div class="pdot"></div>🔎 System Trust ✦</div>
+      <div class="pill pe"><div class="pdot"></div>Economic</div>
+      <div class="pill ps"><div class="pdot"></div>Social</div>
+      <div class="pill pc"><div class="pdot"></div>Civil Liberties</div>
+      <div class="pill pg"><div class="pdot"></div>Governance</div>
+      <div class="pill psy"><div class="pdot"></div>System Trust — New</div>
     </div>
     <p class="mode-hdg">Choose your test length</p>
     <div class="mode-grid">
@@ -347,9 +434,125 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
         <button class="msbtn">Start Deep Dive →</button>
       </div>
     </div>
-    <p class="land-note">Anonymous · No account needed · Nothing stored externally</p>
+    <p class="land-note">Nothing is saved. No account. No agenda.</p>
+    <div class="scroll-hint">↓ Why this test is different</div>
   </div>
 </div>
+
+<!-- WHY IT'S BETTER -->
+<div class="why-section">
+  <div class="why-inner">
+
+    <div class="why-eyebrow">Why we built findmypolitics.com</div>
+    <h2 class="why-h">The original Political Compass has real problems.<br>Here's what we did about it.</h2>
+    <p class="why-sub">The Political Compass test has been around since 2001. Millions of people have taken it. It's also been systematically criticized by political scientists, researchers, and journalists for more than two decades. We read those criticisms and built something better.</p>
+
+    <div class="why-problems">
+      <div class="why-problems-title">What's wrong with the original test</div>
+      <div class="why-problem-grid">
+        <div class="why-problem-card">
+          <div class="why-problem-num">01</div>
+          <div class="why-problem-title">Everyone ends up in the same quadrant</div>
+          <div class="why-problem-body">Researchers have documented that the Political Compass systematically places respondents in the libertarian-left quadrant regardless of their actual views. A 2014 analysis found its questions contain framing that pushes respondents leftward. Most of its 6 billion+ results cluster in one corner of a 4-quadrant grid — which tells you almost nothing.</div>
+          <div class="why-source">Source: Kidd, Q. et al. (2007). "A New Survey for Exploring the Two-Dimensional Structure of Political Space." <em>Political Science & Politics</em>. Also: critiques documented in The Guardian, Vox, and academic political science literature.</div>
+        </div>
+        <div class="why-problem-card">
+          <div class="why-problem-num">02</div>
+          <div class="why-problem-title">Two axes can't capture modern politics</div>
+          <div class="why-problem-body">The economic left-right axis and a single social axis fails to distinguish between, say, a libertarian socialist and a progressive institutionalist — people with radically different politics who score identically. Political scientists have long argued that political identity requires multiple independent dimensions to describe accurately. The American National Election Studies uses many more.</div>
+          <div class="why-source">Source: Nolan, D. (1971). "Classifying and Analyzing Politico-Economic Systems." <em>The Individualist</em>. Feldman, S. (2013). "Political Ideology." <em>Oxford Handbook of Political Psychology</em>.</div>
+        </div>
+        <div class="why-problem-card">
+          <div class="why-problem-num">03</div>
+          <div class="why-problem-title">Questions are vague and outdated</div>
+          <div class="why-problem-body">Questions like "the rich must pay more taxes" don't specify more than whom, compared to what, or by how much — making them meaningless for distinguishing political positions. The questions were written in 2001 and haven't been updated, meaning they miss entirely the fault lines that define politics today: platform moderation, vaccine mandates, climate sovereignty, institutional trust.</div>
+          <div class="why-source">Source: Multiple methodological critiques compiled at politicalcompass.org/faq. Academic criticism: Bobbio, N. (1996). <em>Left and Right: The Significance of a Political Distinction</em>. University of Chicago Press.</div>
+        </div>
+        <div class="why-problem-card">
+          <div class="why-problem-num">04</div>
+          <div class="why-problem-title">No explanation, no context, no nuance</div>
+          <div class="why-problem-body">The original test places a dot on a grid and offers nothing else. No named ideology. No explanation of what your position means. No historical or global context. Research in political psychology consistently shows that people understand their own beliefs better when given comparative context and plain-language descriptions — not abstract coordinates.</div>
+          <div class="why-source">Source: Converse, P.E. (1964). "The Nature of Belief Systems in Mass Publics." In <em>Ideology and Discontent</em>, ed. Apter, D. Free Press. Jost, J.T. (2006). "The End of the End of Ideology." <em>American Psychologist</em>.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-divider"></div>
+
+    <div class="why-solutions-title">What we built instead</div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">📐</div>
+        <div class="why-card-title">5 independent axes</div>
+        <div class="why-card-body">Economic, Social, Civil Liberties, Governance, and System Trust — the last being unique to this test. System Trust separates populists from progressives, libertarians from institutionalists, in ways a two-axis model simply cannot.</div>
+        <div class="why-compare"><span class="why-old">Political Compass: 2 axes</span><span class="why-new">This test: 5 axes</span></div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚖️</div>
+        <div class="why-card-title">Mathematically balanced</div>
+        <div class="why-card-body">Every axis has exactly 8 questions pointing left and 8 pointing right — no systematic bias is possible. Each question was reviewed to ensure neither framing nor content advantages one side. The full question set is available to inspect.</div>
+        <div class="why-compare"><span class="why-old">Political Compass: documented left bias</span><span class="why-new">This test: 8 questions each direction per axis</span></div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📖</div>
+        <div class="why-card-title">Every question has context</div>
+        <div class="why-card-body">Click the ⓘ button on any question to get plain-English background: what the actual policy debate is, what the real numbers are, and what both sides genuinely argue. You're not being asked to react to a slogan — you're engaging with the real substance.</div>
+        <div class="why-compare"><span class="why-old">Political Compass: no context</span><span class="why-new">This test: sourced context on every question</span></div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <div class="why-card-title">Current, specific questions</div>
+        <div class="why-card-body">Questions reference real, ongoing debates: NATO funding, encryption rights, the 2020 election, trade tariffs, police reform. Nothing is vague. Nothing is from 2001. The questions are designed to reveal genuine differences in political values, not just confirm that someone is "left" or "right."</div>
+        <div class="why-compare"><span class="why-old">Political Compass: 2001 questions</span><span class="why-new">This test: current, specific debates</span></div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🗣️</div>
+        <div class="why-card-title">14 named, defined results</div>
+        <div class="why-card-body">Instead of a quadrant, you get a named ideology with a full definition, real-world examples, a traditional left-right placement, and a plain-English summary you could actually say out loud. Results are designed to be informative even to someone with no political background.</div>
+        <div class="why-compare"><span class="why-old">Political Compass: 4 quadrants, no explanation</span><span class="why-new">This test: 14 ideologies, full context</span></div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌍</div>
+        <div class="why-card-title">Global and historical context</div>
+        <div class="why-card-body">See where your position sits relative to 50 countries, 24 historical and contemporary political figures, and the ideological traditions that have shaped modern politics. Context turns a number into something meaningful.</div>
+        <div class="why-compare"><span class="why-old">Political Compass: no comparison</span><span class="why-new">This test: 50 countries, 24 figures</span></div>
+      </div>
+    </div>
+
+    <div class="why-nonpartisan">
+      <div class="why-np-title">A note on non-partisanship</div>
+      <div class="why-np-body">This test was built with the goal of helping people understand their own political values — not to push them toward any particular conclusion. The question set is mathematically balanced (verifiable by inspecting the source code). Questions are framed using the strongest version of both sides' arguments. Results describe ideological traditions as they actually exist, not as caricatures. If you find a question you believe is biased, the contact information below is genuine — feedback on findmypolitics.com is taken seriously.</div>
+    </div>
+
+    <div class="why-cta">
+      <button class="btn-primary-why" onclick="window.scrollTo({top:0,behavior:'smooth'})">Take the test →</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo" style="display:flex;align-items:center;justify-content:center;gap:10px;"><svg width="32" height="32" viewBox="-58 -58 116 116" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;flex-shrink:0">
+  <circle cx="0" cy="0" r="54" fill="none" stroke="#1a1814" stroke-width="5"/>
+  <circle cx="0" cy="0" r="48" fill="white"/>
+  <polygon points="0,-32 -7.5,-4 7.5,-4" fill="#e8c547"/>
+  <polygon points="0,32 -7.5,4 7.5,4" fill="#c83828"/>
+  <circle cx="0" cy="0" r="6" fill="#1a1814"/>
+  <circle cx="0" cy="0" r="3" fill="#e8c547"/>
+</svg><span>FindMyPolitics<span>.</span></span></div>
+    <p class="footer-tagline">Built because the existing ones are kind of broken.</p>
+    <div class="footer-contact">
+      <div class="footer-contact-title">Get in touch</div>
+      <div class="footer-links">
+        <a href="mailto:liamytyt@gmail.com" class="footer-link">✉ liamytyt@gmail.com</a>
+        <a href="https://instagram.com/liampetree" target="_blank" class="footer-link">📷 @liampetree</a>
+      </div>
+    </div>
+    <p class="footer-note">Anonymous · No data collected · No account needed · Built with care</p>
+  </div>
+</footer>
+
 </section>
 
 <!-- QUESTION -->
@@ -376,7 +579,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
     <button class="bbk" id="bbk" onclick="prevQ()" disabled>← Back</button>
     <button class="bnx" id="bnx" onclick="nextQ()" disabled>Next →</button>
   </div>
-  <p class="qhint">Your answers never leave this page.</p>
+  <p class="qhint">Nothing you answer is saved or shared.</p>
 </div>
 </section>
 
@@ -421,7 +624,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
       <canvas id="compassCanvas" width="500" height="500"></canvas>
     </div>
     <div class="compass-coords" id="compassCoords" style="display:none;margin-top:14px;text-align:center;padding:10px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;font-size:.82rem;color:var(--muted);line-height:1.6;">
-      Your coordinates: <strong id="coordText" style="color:var(--text);font-family:'Fraunces',serif;letter-spacing:.02em;"></strong>
+      Your coordinates: <strong id="coordText" style="color:var(--text);font-family:'Playfair Display',serif;letter-spacing:.02em;"></strong>
       <span style="font-size:.72rem;margin-left:8px;">(share this with friends to compare!)</span>
     </div>
     <div class="fig-table-wrap">
@@ -446,25 +649,42 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
 
     <!-- Community -->
     <div class="card fu2">
-      <div class="ct"><div class="ctd" style="background:var(--social)"></div>How You Compare Globally</div>
+      <div class="ct"><div class="ctd" style="background:var(--social)"></div>Where in the World Are You?</div>
       <div class="cg3x">
         <div class="ccard"><div class="cnum" id="cPct" style="color:var(--accent)">—</div><div class="clbl">More left-wing than you</div></div>
         <div class="ccard"><div class="cnum" id="cRight" style="color:var(--social)">—</div><div class="clbl">More right-wing than you</div></div>
         <div class="ccard"><div class="cnum" id="cClose" style="color:var(--civil)">—</div><div class="clbl">Closest country</div></div>
       </div>
-      <table class="ctbl" id="cTbl"></table>
+      <div id="cCountries"></div>
     </div>
 
     <!-- Share -->
     <div class="rf fu3">
       <div class="ct" style="margin-bottom:12px"><div class="ctd" style="background:var(--gov);display:inline-block"></div>Share Your Results</div>
-      <div class="spr">
-        <div class="splbl">My Political Compass Results</div>
-        <div class="spid" id="spId"></div>
-        <div class="sppills" id="spPills"></div>
+      <p style="font-size:.78rem;color:var(--muted);margin-bottom:14px;">Screenshot the card below and share it — or copy the text version.</p>
+      <div class="share-card-wrap">
+        <div class="share-card" id="shareCard">
+          <div class="share-card-glow"></div>
+          <div class="share-card-glow2"></div>
+          <div style="position:relative;z-index:1;display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+          <svg width="28" height="28" viewBox="-58 -58 116 116" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+  <circle cx="0" cy="0" r="54" fill="none" stroke="white" stroke-width="5"/>
+  <circle cx="0" cy="0" r="48" fill="rgba(255,255,255,0.15)"/>
+  <polygon points="0,-32 -7.5,-4 7.5,-4" fill="#e8c547"/>
+  <polygon points="0,32 -7.5,4 7.5,4" fill="#c83828"/>
+  <circle cx="0" cy="0" r="6" fill="white"/>
+  <circle cx="0" cy="0" r="3" fill="#e8c547"/>
+</svg>
+          <span class="sc-site">FindMyPolitics</span>
+        </div>
+          <div class="sc-ideology" style="position:relative;z-index:1" id="scIdeo"></div>
+          <div class="sc-spectrum" style="position:relative;z-index:1" id="scSpectrum"></div>
+          <div class="sc-bars" style="position:relative;z-index:1" id="scBars"></div>
+          <div class="sc-url" style="position:relative;z-index:1">Take the test at findmypolitics.com</div>
+        </div>
       </div>
       <div class="sbtns">
-        <button class="sbtn" onclick="copyRes()">⧉ Copy Results</button>
+        <button class="sbtn" onclick="copyRes()">⧉ Copy Text Results</button>
         <button class="sbtn" onclick="shareTw()">𝕏 Share on X</button>
         <button class="sbtn-mode" onclick="goHome()">↕ Try Different Length</button>
         <button class="sbtn-rt" onclick="retake()">↺ Retake</button>
@@ -472,7 +692,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
     </div>
   </div>
 
-  <p class="rnote"><strong style="color:var(--muted)">A note on these results:</strong> No test can fully capture the complexity of your political views. Treat this as a starting point for reflection, not a definitive label. Historical figure placements are broadly accepted academic estimates — reasonable people can debate exact positions. Country comparison data is modelled on published global survey research. No personal data is collected.</p>
+  <p class="rnote"><strong style="color:var(--muted)">A note on these results:</strong> No test can fully capture the complexity of your political views. Treat this as a starting point for reflection, not a definitive label. Figure placements are academic estimates — reasonable people disagree. Country data is based on global survey research. Nothing about you is collected.</p>
 </div>
 </section>
 
@@ -490,173 +710,173 @@ function toggleTheme(){
 // ══ QUESTIONS ══
 const AQ=[
   // ── ECONOMIC (16) ──
-  {t:"When a company's profits rise sharply, the gains should primarily go back to workers through higher wages rather than to shareholders.",a:"💰 Economic",x:"econ",d:1,tier:1,
+  {t:"When a company's profits rise sharply, the gains should primarily go back to workers through higher wages rather than to shareholders.",a:"Economic",x:"econ",d:1,tier:1,
    ctx:"This is about who benefits when a business does well — employees or investors. It touches on debates about wages, dividends, and how wealth flows in the economy."},
-  {t:"A business owner who builds a successful company from scratch has earned the right to pass it on to their children without the government taking a large portion.",a:"💰 Economic",x:"econ",d:-1,tier:1,
+  {t:"A business owner who builds a successful company from scratch has earned the right to pass it on to their children without the government taking a large portion.",a:"Economic",x:"econ",d:-1,tier:1,
    ctx:"This is about inheritance and estate taxes. Some argue inherited wealth was already taxed once; others say untaxed inheritance compounds inequality across generations."},
-  {t:"Someone who works full-time at any job should be able to afford rent, food, and basic healthcare without needing government assistance.",a:"💰 Economic",x:"econ",d:1,tier:1,
+  {t:"Someone who works full-time at any job should be able to afford rent, food, and basic healthcare without needing government assistance.",a:"Economic",x:"econ",d:1,tier:1,
    ctx:"This asks whether the minimum wage and labor market produce adequate living standards on their own, or whether government support is structurally necessary even for working people."},
-  {t:"When government adds rules that businesses must follow, it usually causes more economic harm than the benefits it provides.",a:"💰 Economic",x:"econ",d:-1,tier:1,
+  {t:"When government adds rules that businesses must follow, it usually causes more economic harm than the benefits it provides.",a:"Economic",x:"econ",d:-1,tier:1,
    ctx:"Business regulation includes environmental rules, safety standards, financial oversight, and labor laws. The debate is whether these protect people or slow growth and raise costs."},
-  {t:"The gap between what a typical CEO earns and what the average worker at the same company earns has grown too large and is bad for society.",a:"💰 Economic",x:"econ",d:1,tier:2,
+  {t:"The gap between what a typical CEO earns and what the average worker at the same company earns has grown too large and is bad for society.",a:"Economic",x:"econ",d:1,tier:2,
    ctx:"CEO-to-worker pay ratios have grown from about 20:1 in 1965 to over 300:1 today. This asks whether that gap reflects merit or a broken system — and whether it matters."},
-  {t:"If someone works hard but still cannot get ahead financially, the most honest explanation is usually that the system makes it difficult — not that they aren't trying.",a:"💰 Economic",x:"econ",d:1,tier:2,
+  {t:"If someone works hard but still cannot get ahead financially, the most honest explanation is usually that the system makes it difficult — not that they aren't trying.",a:"Economic",x:"econ",d:1,tier:2,
    ctx:"This is about whether economic struggle is primarily caused by individual choices or structural factors like wage levels, housing costs, healthcare, and inherited advantages."},
-  {t:"Reducing taxes on high earners and corporations tends to benefit the broader economy, not just the people who pay those taxes.",a:"💰 Economic",x:"econ",d:-1,tier:2,
+  {t:"Reducing taxes on high earners and corporations tends to benefit the broader economy, not just the people who pay those taxes.",a:"Economic",x:"econ",d:-1,tier:2,
    ctx:"This refers to 'trickle-down economics' — the idea that lower taxes on high earners stimulates investment and job creation. Critics say the gains mostly remain at the top."},
-  {t:"A company should be free to pay workers whatever both sides agree to, without the government setting a mandatory minimum wage.",a:"💰 Economic",x:"econ",d:-1,tier:2,
+  {t:"A company should be free to pay workers whatever both sides agree to, without the government setting a mandatory minimum wage.",a:"Economic",x:"econ",d:-1,tier:2,
    ctx:"Minimum wage opponents say it distorts the labor market and costs jobs. Supporters say workers often lack bargaining power and minimum wages protect them from exploitation."},
-  {t:"When workers organize collectively to negotiate pay and conditions, it makes the economy more fair without necessarily making it less efficient.",a:"💰 Economic",x:"econ",d:1,tier:2,
+  {t:"When workers organize collectively to negotiate pay and conditions, it makes the economy more fair without necessarily making it less efficient.",a:"Economic",x:"econ",d:1,tier:2,
    ctx:"This is about labor unions. Debates center on whether unions protect workers from corporate power, or drive up costs, reduce flexibility, and harm non-union workers."},
-  {t:"If one company dominates its entire industry and has crushed competitors, it has most likely just done a better job — that's competition working correctly.",a:"💰 Economic",x:"econ",d:-1,tier:2,
+  {t:"If one company dominates its entire industry and has crushed competitors, it has most likely just done a better job — that's competition working correctly.",a:"Economic",x:"econ",d:-1,tier:2,
    ctx:"This touches on antitrust law. Should government break up dominant companies like Amazon, Google, or Meta? Or should market forces decide who wins and loses?"},
-  {t:"Higher education should be affordable enough that no student who qualifies academically needs to take on significant debt to attend.",a:"💰 Economic",x:"econ",d:1,tier:3,
+  {t:"Higher education should be affordable enough that no student who qualifies academically needs to take on significant debt to attend.",a:"Economic",x:"econ",d:1,tier:3,
    ctx:"The US has some of the highest university tuition in the world. This asks whether higher education should be treated as a public good (like K-12 schooling) or a market service."},
-  {t:"The possibility of becoming very wealthy is one of the most important forces driving innovation, hard work, and economic progress.",a:"💰 Economic",x:"econ",d:-1,tier:3,
+  {t:"The possibility of becoming very wealthy is one of the most important forces driving innovation, hard work, and economic progress.",a:"Economic",x:"econ",d:-1,tier:3,
    ctx:"This is about whether large financial rewards are a necessary incentive for the risk-taking and effort that creates new businesses and technologies."},
-  {t:"When private companies can deliver a public service cheaper and better than government, they should do so — even for things like prisons, schools, or utilities.",a:"💰 Economic",x:"econ",d:-1,tier:3,
+  {t:"When private companies can deliver a public service cheaper and better than government, they should do so — even for things like prisons, schools, or utilities.",a:"Economic",x:"econ",d:-1,tier:3,
    ctx:"Privatization moves public services to private management. Critics say profit motives distort services like healthcare, prisons, and water. Supporters say competition drives efficiency."},
-  {t:"Government should invest directly in building renewable energy infrastructure rather than relying on market incentives alone to shift the economy.",a:"💰 Economic",x:"econ",d:1,tier:3,
+  {t:"Government should invest directly in building renewable energy infrastructure rather than relying on market incentives alone to shift the economy.",a:"Economic",x:"econ",d:1,tier:3,
    ctx:"This is about industrial policy — whether government should actively build out solar, wind, and grid infrastructure, or leave the energy transition to private investment and market signals."},
-  {t:"An economy that produces extreme wealth at the top while many people cannot afford basic necessities is not functioning as it should.",a:"💰 Economic",x:"econ",d:1,tier:3,
+  {t:"An economy that produces extreme wealth at the top while many people cannot afford basic necessities is not functioning as it should.",a:"Economic",x:"econ",d:1,tier:3,
    ctx:"This asks whether extreme inequality at the top coexists with — or contributes to — hardship at the bottom, and whether that gap reflects economic failure or natural market outcomes."},
-  {t:"Environmental regulations, on balance, cost consumers and workers more than the protections they provide are worth.",a:"💰 Economic",x:"econ",d:-1,tier:3,
+  {t:"Environmental regulations, on balance, cost consumers and workers more than the protections they provide are worth.",a:"Economic",x:"econ",d:-1,tier:3,
    ctx:"Clean air, water, and emissions rules have real costs to businesses that can be passed on to consumers. The debate is whether health, environmental, and climate benefits outweigh those costs."},
 
   // ── SOCIAL / AUTHORITY (16) ──
-  {t:"Adults who use substances that affect only themselves should face no criminal penalty — this should be treated as a health matter, not a criminal one.",a:"🏛 Social",x:"social",d:1,tier:1,
+  {t:"Adults who use substances that affect only themselves should face no criminal penalty — this should be treated as a health matter, not a criminal one.",a:"Social",x:"social",d:1,tier:1,
    ctx:"Most Western countries criminalize drug use. Portugal decriminalized all drugs in 2001 and saw drug deaths and HIV infections fall. This asks where you stand on that general approach."},
-  {t:"A society functions better when most people share a common set of cultural values and traditions rather than each person defining their own.",a:"🏛 Social",x:"social",d:-1,tier:1,
+  {t:"A society functions better when most people share a common set of cultural values and traditions rather than each person defining their own.",a:"Social",x:"social",d:-1,tier:1,
    ctx:"This is about cultural cohesion vs. pluralism — whether shared norms provide social stability, or whether diversity of values and lifestyles strengthens a society."},
-  {t:"The government should have no role in defining which adult relationships or family structures are officially recognized.",a:"🏛 Social",x:"social",d:1,tier:1,
+  {t:"The government should have no role in defining which adult relationships or family structures are officially recognized.",a:"Social",x:"social",d:1,tier:1,
    ctx:"This broadly covers same-sex marriage, civil unions, and other relationship structures. It asks whether marriage and family are civil matters the state must treat equally, or things the state may define."},
-  {t:"Adding more police officers and toughening criminal sentences is a reliable way to reduce violent crime in cities.",a:"🏛 Social",x:"social",d:-1,tier:1,
+  {t:"Adding more police officers and toughening criminal sentences is a reliable way to reduce violent crime in cities.",a:"Social",x:"social",d:-1,tier:1,
    ctx:"Research on whether more policing and harsher sentences reduce crime is mixed. Some studies show deterrence effects; others find poverty reduction and social investment more effective long-term."},
-  {t:"Protests that block traffic or disrupt businesses go too far — free expression does not give people the right to impose significant costs on others.",a:"🏛 Social",x:"social",d:-1,tier:2,
+  {t:"Protests that block traffic or disrupt businesses go too far — free expression does not give people the right to impose significant costs on others.",a:"Social",x:"social",d:-1,tier:2,
    ctx:"Disruptive tactics like highway blockages and sit-ins have historically been used in civil rights movements. The question is whether disruption is a legitimate part of political speech."},
-  {t:"There are measurable, systemic differences in how the criminal justice system treats people of different races that are not fully explained by other factors.",a:"🏛 Social",x:"social",d:1,tier:2,
+  {t:"There are measurable, systemic differences in how the criminal justice system treats people of different races that are not fully explained by other factors.",a:"Social",x:"social",d:1,tier:2,
    ctx:"Research shows racial disparities in stops, arrests, sentencing, and incarceration. The debate is whether this reflects systemic bias, socioeconomic factors, policing choices, or other causes."},
-  {t:"Religious institutions and faith communities play a valuable role in civic life and should be supported rather than pushed out of the public square.",a:"🏛 Social",x:"social",d:-1,tier:2,
+  {t:"Religious institutions and faith communities play a valuable role in civic life and should be supported rather than pushed out of the public square.",a:"Social",x:"social",d:-1,tier:2,
    ctx:"This is about the role of religion in public life. Some see religious organizations as vital social infrastructure; others argue separation of church and state means religion should remain private."},
-  {t:"Biological differences between males and females are significant enough that sex-specific categories in sports should be maintained as they traditionally have been.",a:"🏛 Social",x:"social",d:-1,tier:2,
+  {t:"Biological differences between males and females are significant enough that sex-specific categories in sports should be maintained as they traditionally have been.",a:"Social",x:"social",d:-1,tier:2,
    ctx:"This debate involves transgender athletes competing in categories matching their gender identity. There is scientific disagreement about the degree to which transition affects athletic performance."},
-  {t:"Someone who reveals government secrets to expose clearly illegal or unconstitutional activity should be protected from prosecution.",a:"🏛 Social",x:"social",d:1,tier:2,
+  {t:"Someone who reveals government secrets to expose clearly illegal or unconstitutional activity should be protected from prosecution.",a:"Social",x:"social",d:1,tier:2,
    ctx:"This refers to whistleblowers like Edward Snowden (NSA surveillance) and Chelsea Manning (military documents). The question is whether exposing wrongdoing justifies breaking secrecy laws."},
-  {t:"Decisions about abortion access are appropriately made at the state level rather than by federal law or the Supreme Court.",a:"🏛 Social",x:"social",d:-1,tier:2,
+  {t:"Decisions about abortion access are appropriately made at the state level rather than by federal law or the Supreme Court.",a:"Social",x:"social",d:-1,tier:2,
    ctx:"After the Supreme Court overturned Roe v. Wade in 2022, abortion law reverted to states. This asks whether state-level control is the correct arrangement, separate from your personal view on abortion."},
-  {t:"The difference in average earnings between men and women reflects ongoing workplace discrimination more than it reflects differences in career choices.",a:"🏛 Social",x:"social",d:1,tier:3,
+  {t:"The difference in average earnings between men and women reflects ongoing workplace discrimination more than it reflects differences in career choices.",a:"Social",x:"social",d:1,tier:3,
    ctx:"The raw pay gap is real (~18% on average). The debate is whether this reflects discrimination, or is mostly explained by differences in occupation, hours worked, and career interruptions for caregiving."},
-  {t:"Parents should have significant authority to raise their children according to their own religious and cultural beliefs, even when those beliefs conflict with what schools teach.",a:"🏛 Social",x:"social",d:-1,tier:3,
+  {t:"Parents should have significant authority to raise their children according to their own religious and cultural beliefs, even when those beliefs conflict with what schools teach.",a:"Social",x:"social",d:-1,tier:3,
    ctx:"This covers tensions around sex education, evolution, gender identity curriculum, and religious upbringing. It asks how much parental authority should override state educational standards."},
-  {t:"The state should not have the power to execute someone, given that no justice system is reliable enough to justify an irreversible punishment.",a:"🏛 Social",x:"social",d:1,tier:3,
+  {t:"The state should not have the power to execute someone, given that no justice system is reliable enough to justify an irreversible punishment.",a:"Social",x:"social",d:1,tier:3,
    ctx:"The US is one of the few wealthy democracies still using the death penalty. Since 1973, over 190 people on death row have been exonerated before execution. This asks whether that risk alone is disqualifying."},
-  {t:"People who have lived and worked in a country illegally for many years have still broken the law and should face legal consequences, even if their lives are now rooted there.",a:"🏛 Social",x:"social",d:-1,tier:3,
+  {t:"People who have lived and worked in a country illegally for many years have still broken the law and should face legal consequences, even if their lives are now rooted there.",a:"Social",x:"social",d:-1,tier:3,
    ctx:"About 11 million undocumented people live in the US, many for 10–20+ years with US-born children. This asks whether the law should be enforced regardless of how integrated someone has become."},
-  {t:"Using race or background as one factor in university admissions is a justified tool for correcting the lasting effects of historical discrimination.",a:"🏛 Social",x:"social",d:1,tier:3,
+  {t:"Using race or background as one factor in university admissions is a justified tool for correcting the lasting effects of historical discrimination.",a:"Social",x:"social",d:1,tier:3,
    ctx:"The Supreme Court struck down race-based affirmative action in college admissions in 2023. This asks whether using race as a factor was fair compensation for historical injustice, or unfair to other applicants."},
-  {t:"High rates of gun ownership in the United States make the country less safe on balance, not more.",a:"🏛 Social",x:"social",d:1,tier:3,
+  {t:"High rates of gun ownership in the United States make the country less safe on balance, not more.",a:"Social",x:"social",d:1,tier:3,
    ctx:"The US has the most civilian guns per capita of any country and significantly higher gun death rates than peer nations. The debate is whether guns primarily deter crime or primarily increase overall risk."},
 
   // ── CIVIL LIBERTIES (16) ──
-  {t:"Before accessing someone's private communications — emails, messages, calls — the government should always be required to obtain a specific warrant from a judge.",a:"⚖️ Civil Liberties",x:"civil",d:1,tier:1,
+  {t:"Before accessing someone's private communications — emails, messages, calls — the government should always be required to obtain a specific warrant from a judge.",a:"Civil Liberties",x:"civil",d:1,tier:1,
    ctx:"After 9/11, the NSA built systems collecting messages and calls from millions of Americans without individual warrants. This asks whether the warrant requirement should be absolute."},
-  {t:"During a genuine national security emergency, the government may need to act faster than the legal system allows — some rights can be temporarily set aside.",a:"⚖️ Civil Liberties",x:"civil",d:-1,tier:1,
+  {t:"During a genuine national security emergency, the government may need to act faster than the legal system allows — some rights can be temporarily set aside.",a:"Civil Liberties",x:"civil",d:-1,tier:1,
    ctx:"Emergency powers have been used to justify Japanese internment in WWII, post-9/11 detention without trial, and COVID lockdowns. The debate is whether emergencies justify bypassing normal legal protections."},
-  {t:"Someone convicted of a crime who has fully served their sentence should regain all civil rights, including the right to vote.",a:"⚖️ Civil Liberties",x:"civil",d:1,tier:1,
+  {t:"Someone convicted of a crime who has fully served their sentence should regain all civil rights, including the right to vote.",a:"Civil Liberties",x:"civil",d:1,tier:1,
    ctx:"In many US states, felony convictions result in permanent or long-term loss of voting rights. About 4.6 million Americans cannot vote due to past convictions. This asks whether that is appropriate."},
-  {t:"When authorities have strong reason to believe someone poses an imminent danger, they should be able to detain that person before a crime is actually committed.",a:"⚖️ Civil Liberties",x:"civil",d:-1,tier:1,
+  {t:"When authorities have strong reason to believe someone poses an imminent danger, they should be able to detain that person before a crime is actually committed.",a:"Civil Liberties",x:"civil",d:-1,tier:1,
    ctx:"'Preventive detention' means holding someone based on suspected future behavior, not a past crime. The legal standard in the US generally requires evidence of a completed or clearly imminent act."},
-  {t:"Cameras that automatically identify faces and match them to databases should not be deployed in public spaces without explicit legal authorization.",a:"⚖️ Civil Liberties",x:"civil",d:1,tier:2,
+  {t:"Cameras that automatically identify faces and match them to databases should not be deployed in public spaces without explicit legal authorization.",a:"Civil Liberties",x:"civil",d:1,tier:2,
    ctx:"AI facial recognition is used by many police departments. It has a documented higher error rate on darker-skinned faces and has contributed to wrongful arrests. The debate is whether crime-solving benefits justify the surveillance costs."},
-  {t:"Online platforms should be legally required to remove content that health experts identify as dangerous medical misinformation.",a:"⚖️ Civil Liberties",x:"civil",d:-1,tier:2,
+  {t:"Online platforms should be legally required to remove content that health experts identify as dangerous medical misinformation.",a:"Civil Liberties",x:"civil",d:-1,tier:2,
    ctx:"During COVID, platforms removed vaccine misinformation. Critics argued this was government-directed censorship; supporters said false health information caused real deaths. This asks where the free speech line is."},
-  {t:"A news organization that publishes leaked government documents revealing illegal or unconstitutional activity should be protected from prosecution.",a:"⚖️ Civil Liberties",x:"civil",d:1,tier:2,
+  {t:"A news organization that publishes leaked government documents revealing illegal or unconstitutional activity should be protected from prosecution.",a:"Civil Liberties",x:"civil",d:1,tier:2,
    ctx:"This covers cases like the Pentagon Papers and NSA leak stories. The First Amendment protects the press, but the government has debated whether publishers of classified material can be prosecuted."},
-  {t:"Requiring proof of vaccination to access shared public spaces like restaurants and concert venues is a reasonable policy during a serious public health emergency.",a:"⚖️ Civil Liberties",x:"civil",d:-1,tier:2,
+  {t:"Requiring proof of vaccination to access shared public spaces like restaurants and concert venues is a reasonable policy during a serious public health emergency.",a:"Civil Liberties",x:"civil",d:-1,tier:2,
    ctx:"Vaccine passes were used in several countries during COVID. Supporters said they protected public health; opponents said they created a coercive two-tier society that violated medical privacy."},
-  {t:"Technology companies should be allowed to offer encrypted messaging that even law enforcement cannot access — the privacy benefit outweighs the security cost.",a:"⚖️ Civil Liberties",x:"civil",d:1,tier:2,
+  {t:"Technology companies should be allowed to offer encrypted messaging that even law enforcement cannot access — the privacy benefit outweighs the security cost.",a:"Civil Liberties",x:"civil",d:1,tier:2,
    ctx:"In 2016, the FBI demanded Apple help unlock a shooter's encrypted iPhone. Apple refused, arguing a 'backdoor' would weaken everyone's security. The FBI eventually paid a third party to crack it."},
-  {t:"Law enforcement should be permitted to monitor a person's public social media activity as grounds for investigation, even without a specific crime being reported.",a:"⚖️ Civil Liberties",x:"civil",d:-1,tier:2,
+  {t:"Law enforcement should be permitted to monitor a person's public social media activity as grounds for investigation, even without a specific crime being reported.",a:"Civil Liberties",x:"civil",d:-1,tier:2,
    ctx:"Police increasingly use social media monitoring, which has flagged protesters, activists, and journalists. The question is whether this is effective threat detection or surveillance of lawful speech."},
-  {t:"People who expose genuine government wrongdoing deserve legal protection, even if they violated secrecy laws to do it.",a:"⚖️ Civil Liberties",x:"civil",d:1,tier:3,
+  {t:"People who expose genuine government wrongdoing deserve legal protection, even if they violated secrecy laws to do it.",a:"Civil Liberties",x:"civil",d:1,tier:3,
    ctx:"US whistleblower protections cover only narrow circumstances. Edward Snowden, who exposed mass surveillance, was charged under the Espionage Act. He lives in exile after the public revelation."},
-  {t:"A confession obtained through extended, high-pressure questioning without a lawyer present should still be admissible as evidence in court.",a:"⚖️ Civil Liberties",x:"civil",d:-1,tier:3,
+  {t:"A confession obtained through extended, high-pressure questioning without a lawyer present should still be admissible as evidence in court.",a:"Civil Liberties",x:"civil",d:-1,tier:3,
    ctx:"False confessions account for about 30% of wrongful convictions overturned by DNA evidence. Miranda rights were established specifically to prevent coercive interrogation from producing unreliable confessions."},
-  {t:"Citizens should have a meaningful right to obtain copies of government documents — not just in theory, but with agencies required to respond quickly and completely.",a:"⚖️ Civil Liberties",x:"civil",d:1,tier:3,
+  {t:"Citizens should have a meaningful right to obtain copies of government documents — not just in theory, but with agencies required to respond quickly and completely.",a:"Civil Liberties",x:"civil",d:1,tier:3,
    ctx:"The Freedom of Information Act (FOIA) allows requests in theory, but agencies routinely delay, heavily redact, or deny them. Many democracies have stronger government transparency requirements than the US."},
-  {t:"If someone is clearly guilty of a serious crime, the method by which police obtained the evidence against them matters less than ensuring they face justice.",a:"⚖️ Civil Liberties",x:"civil",d:-1,tier:3,
+  {t:"If someone is clearly guilty of a serious crime, the method by which police obtained the evidence against them matters less than ensuring they face justice.",a:"Civil Liberties",x:"civil",d:-1,tier:3,
    ctx:"The 'exclusionary rule' means illegally obtained evidence cannot be used in court. Critics call it a technicality that lets criminals go free; supporters say without it, police have no incentive to follow the law."},
-  {t:"Laws that impose serious criminal charges on people who block traffic during a protest are more about discouraging political speech than protecting public safety.",a:"⚖️ Civil Liberties",x:"civil",d:1,tier:3,
+  {t:"Laws that impose serious criminal charges on people who block traffic during a protest are more about discouraging political speech than protecting public safety.",a:"Civil Liberties",x:"civil",d:1,tier:3,
    ctx:"Since 2020, over 30 states have passed laws increasing penalties for protest-related disruption. Supporters say they protect drivers; critics say they are designed to deter legitimate political organizing."},
-  {t:"Private companies acting as platforms for public speech have the right to remove accounts or content, even those belonging to prominent political figures.",a:"⚖️ Civil Liberties",x:"civil",d:-1,tier:3,
+  {t:"Private companies acting as platforms for public speech have the right to remove accounts or content, even those belonging to prominent political figures.",a:"Civil Liberties",x:"civil",d:-1,tier:3,
    ctx:"After January 6 2021, Twitter and Facebook banned Donald Trump. Companies said he incited violence; critics argued that private platforms now have enormous — and unaccountable — power over political speech."},
 
   // ── GOVERNANCE (16) ──
-  {t:"Maintaining military alliances with other countries — even when costly — makes the United States more secure than going it alone.",a:"🌍 Governance",x:"gov",d:1,tier:1,
+  {t:"Maintaining military alliances with other countries — even when costly — makes the United States more secure than going it alone.",a:"Governance",x:"gov",d:1,tier:1,
    ctx:"NATO requires members to commit to mutual defense and spend at least 2% of GDP on their military. The US pays a disproportionate share. This asks whether those commitments are worth the cost."},
-  {t:"The United States should not be legally obligated to defend another country militarily, regardless of any treaty — American lives should not be risked for foreign governments.",a:"🌍 Governance",x:"gov",d:-1,tier:1,
+  {t:"The United States should not be legally obligated to defend another country militarily, regardless of any treaty — American lives should not be risked for foreign governments.",a:"Governance",x:"gov",d:-1,tier:1,
    ctx:"This challenges the core logic of NATO and other mutual defense agreements. The US has treaty obligations to defend dozens of countries. This asks whether those obligations should exist at all."},
-  {t:"Allowing more immigrants — including workers without advanced degrees — is good for the US economy over the long term.",a:"🌍 Governance",x:"gov",d:1,tier:1,
+  {t:"Allowing more immigrants — including workers without advanced degrees — is good for the US economy over the long term.",a:"Governance",x:"gov",d:1,tier:1,
    ctx:"Most economic research finds immigration increases overall GDP and tax revenues. The distributional effects — who gains versus who faces more labor competition — are more contested."},
-  {t:"The current level of unauthorized entry across the US southern border represents a genuine crisis requiring urgent and significant government action.",a:"🌍 Governance",x:"gov",d:-1,tier:1,
+  {t:"The current level of unauthorized entry across the US southern border represents a genuine crisis requiring urgent and significant government action.",a:"Governance",x:"gov",d:-1,tier:1,
    ctx:"Border crossing numbers hit record highs in recent years. Supporters of stronger enforcement say this strains communities and laws; others argue most crossers are asylum seekers with a legal right to apply."},
-  {t:"The United States should meet its international climate commitments even when doing so requires American industries to adapt how they operate.",a:"🌍 Governance",x:"gov",d:1,tier:2,
+  {t:"The United States should meet its international climate commitments even when doing so requires American industries to adapt how they operate.",a:"Governance",x:"gov",d:1,tier:2,
    ctx:"The Paris Agreement committed the US to significant carbon reductions by 2030. The US withdrew under Trump and rejoined under Biden. The costs to certain industries — coal, oil, heavy manufacturing — are real and concentrated."},
-  {t:"Trade agreements that open American markets to cheaper foreign goods end up hurting more American workers than the lower consumer prices justify.",a:"🌍 Governance",x:"gov",d:-1,tier:2,
+  {t:"Trade agreements that open American markets to cheaper foreign goods end up hurting more American workers than the lower consumer prices justify.",a:"Governance",x:"gov",d:-1,tier:2,
    ctx:"Economists generally support free trade for overall GDP growth, but it causes concentrated job losses in manufacturing. NAFTA and China's WTO entry coincided with the loss of millions of US factory jobs."},
-  {t:"People fleeing violence, war, or political persecution have the right to seek protection in the United States, regardless of how they entered.",a:"🌍 Governance",x:"gov",d:1,tier:2,
+  {t:"People fleeing violence, war, or political persecution have the right to seek protection in the United States, regardless of how they entered.",a:"Governance",x:"gov",d:1,tier:2,
    ctx:"US and international law allow people to apply for asylum regardless of how they entered — including crossing illegally. Recent US policies have tried to restrict or end this right in practice."},
-  {t:"The United States gives too much money to foreign governments and international organizations relative to what it gets in return.",a:"🌍 Governance",x:"gov",d:-1,tier:2,
+  {t:"The United States gives too much money to foreign governments and international organizations relative to what it gets in return.",a:"Governance",x:"gov",d:-1,tier:2,
    ctx:"US foreign aid is about 1% of the federal budget. Supporters say it prevents conflicts and builds alliances; critics say it should be redirected to domestic needs."},
-  {t:"Immigration from many different parts of the world has made American culture, innovation, and economic output stronger overall.",a:"🌍 Governance",x:"gov",d:1,tier:2,
+  {t:"Immigration from many different parts of the world has made American culture, innovation, and economic output stronger overall.",a:"Governance",x:"gov",d:1,tier:2,
    ctx:"The US has been shaped by many waves of immigration. This asks whether you see the resulting cultural change as generally positive or negative for American identity and wellbeing."},
-  {t:"Placing tariffs on imported goods — even if it raises prices for American consumers — is sometimes justified to protect domestic industries and national security.",a:"🌍 Governance",x:"gov",d:-1,tier:2,
+  {t:"Placing tariffs on imported goods — even if it raises prices for American consumers — is sometimes justified to protect domestic industries and national security.",a:"Governance",x:"gov",d:-1,tier:2,
    ctx:"Tariffs are a tax on imports paid by American importers, often passed to consumers. Both Trump and Biden imposed significant tariffs on China. The question is whether protecting industries justifies higher consumer costs."},
-  {t:"An international court should be able to try individuals for war crimes or crimes against humanity, even if their home country does not consent.",a:"🌍 Governance",x:"gov",d:1,tier:3,
+  {t:"An international court should be able to try individuals for war crimes or crimes against humanity, even if their home country does not consent.",a:"Governance",x:"gov",d:1,tier:3,
    ctx:"The International Criminal Court (ICC) has this theoretical authority, but the US is not a member. The US does not recognize its jurisdiction over American citizens, arguing sovereignty protections are more important."},
-  {t:"International bodies like the UN, WHO, and WTO have accumulated more authority over domestic American policy than they should have.",a:"🌍 Governance",x:"gov",d:-1,tier:3,
+  {t:"International bodies like the UN, WHO, and WTO have accumulated more authority over domestic American policy than they should have.",a:"Governance",x:"gov",d:-1,tier:3,
    ctx:"These organizations set standards and agreements that member states commit to follow. Critics say they erode sovereignty; supporters say they coordinate solutions to problems no single country can solve."},
-  {t:"Large technology companies that operate globally should face binding international rules on data privacy, not just the laws of wherever they are headquartered.",a:"🌍 Governance",x:"gov",d:1,tier:3,
+  {t:"Large technology companies that operate globally should face binding international rules on data privacy, not just the laws of wherever they are headquartered.",a:"Governance",x:"gov",d:1,tier:3,
    ctx:"The EU's GDPR has become a de facto global data privacy standard. The US has no equivalent federal law. This asks whether international rules should govern companies like Google and Meta regardless of where they are based."},
-  {t:"Continuing to provide military and financial support to Ukraine is not worth the cost to American taxpayers.",a:"🌍 Governance",x:"gov",d:-1,tier:3,
+  {t:"Continuing to provide military and financial support to Ukraine is not worth the cost to American taxpayers.",a:"Governance",x:"gov",d:-1,tier:3,
    ctx:"The US has provided over $100 billion to Ukraine since Russia's 2022 invasion. Supporters say it's necessary to prevent further Russian expansion; critics say it is not America's fight."},
-  {t:"Undocumented people who have lived, worked, and raised families in the United States for many years should have access to a legal pathway to stay.",a:"🌍 Governance",x:"gov",d:1,tier:3,
+  {t:"Undocumented people who have lived, worked, and raised families in the United States for many years should have access to a legal pathway to stay.",a:"Governance",x:"gov",d:1,tier:3,
    ctx:"About 11 million undocumented immigrants live in the US, many for over a decade with US-born children. Critics say any pathway rewards illegal entry; supporters say mass deportation is neither feasible nor humane."},
-  {t:"When American national interests conflict with international rules or the expectations of allies, the US should act in its own interest.",a:"🌍 Governance",x:"gov",d:-1,tier:3,
+  {t:"When American national interests conflict with international rules or the expectations of allies, the US should act in its own interest.",a:"Governance",x:"gov",d:-1,tier:3,
    ctx:"This is the core of 'America First' foreign policy — that the US should prioritize its own interests even when it means breaking international norms. The alternative is a rules-based international order."},
 
   // ── SYSTEM TRUST (16) ──
-  {t:"The 2020 US presidential election result accurately reflected how Americans voted.",a:"🔎 System Trust",x:"system",d:1,tier:1,
+  {t:"The 2020 US presidential election result accurately reflected how Americans voted.",a:"System Trust",x:"system",d:1,tier:1,
    ctx:"Dozens of courts, election officials (including Republicans), and the Justice Department found no evidence of widespread fraud that affected the 2020 outcome. This asks whether you accept that conclusion."},
-  {t:"Television news and major national newspapers tend to present stories in ways that systematically favor one side of the political debate.",a:"🔎 System Trust",x:"system",d:-1,tier:1,
+  {t:"Television news and major national newspapers tend to present stories in ways that systematically favor one side of the political debate.",a:"System Trust",x:"system",d:-1,tier:1,
    ctx:"Media bias is real but complex — studies find different outlets lean different directions. This asks whether you see bias as systematic and fundamental, or whether outlets generally try to report fairly despite their imperfections."},
-  {t:"When scientists in a given field reach a strong consensus on an empirical question, that consensus should carry significant weight in how policy is set.",a:"🔎 System Trust",x:"system",d:1,tier:1,
+  {t:"When scientists in a given field reach a strong consensus on an empirical question, that consensus should carry significant weight in how policy is set.",a:"System Trust",x:"system",d:1,tier:1,
    ctx:"Scientific consensus means the overwhelming majority of field experts agree based on accumulated evidence. This asks whether that consensus deserves special policy weight, or whether political leaders should weigh it against other factors."},
-  {t:"Regardless of which party is in power, the priorities of large donors and corporations tend to shape policy outcomes more than the views of ordinary voters.",a:"🔎 System Trust",x:"system",d:-1,tier:1,
+  {t:"Regardless of which party is in power, the priorities of large donors and corporations tend to shape policy outcomes more than the views of ordinary voters.",a:"System Trust",x:"system",d:-1,tier:1,
    ctx:"A Princeton study found policy outcomes track elite preferences more closely than public opinion. This asks whether you see wealthy donor influence as a fundamental, structural feature of American democracy."},
-  {t:"Despite political controversy around recent appointments, the Supreme Court still mostly makes decisions based on legal reasoning rather than pure party loyalty.",a:"🔎 System Trust",x:"system",d:1,tier:2,
+  {t:"Despite political controversy around recent appointments, the Supreme Court still mostly makes decisions based on legal reasoning rather than pure party loyalty.",a:"System Trust",x:"system",d:1,tier:2,
    ctx:"Research on judicial behavior shows justices do tend to rule in patterns consistent with the party of the president who appointed them, though they also cross party lines on many cases."},
-  {t:"During the COVID-19 pandemic, financial pressures from pharmaceutical companies influenced how quickly regulators approved vaccines.",a:"🔎 System Trust",x:"system",d:-1,tier:2,
+  {t:"During the COVID-19 pandemic, financial pressures from pharmaceutical companies influenced how quickly regulators approved vaccines.",a:"System Trust",x:"system",d:-1,tier:2,
    ctx:"COVID vaccines were approved under Emergency Use Authorization after large clinical trials. The FDA process was faster than normal. This asks whether you see that as dangerous regulatory capture or an appropriate emergency response."},
-  {t:"Government agencies staffed by career scientists and civil servants — like the CDC and FDA — generally try to make decisions based on evidence, not politics.",a:"🔎 System Trust",x:"system",d:1,tier:2,
+  {t:"Government agencies staffed by career scientists and civil servants — like the CDC and FDA — generally try to make decisions based on evidence, not politics.",a:"System Trust",x:"system",d:1,tier:2,
    ctx:"These agencies have career staff theoretically insulated from political pressure. In practice, political appointees at the top can shape priorities. This asks how much you trust the institutions themselves, separate from who's in charge."},
-  {t:"There are powerful, coordinated networks of extremely wealthy and influential people who shape global events in ways that the general public never learns about.",a:"🔎 System Trust",x:"system",d:-1,tier:2,
+  {t:"There are powerful, coordinated networks of extremely wealthy and influential people who shape global events in ways that the general public never learns about.",a:"System Trust",x:"system",d:-1,tier:2,
    ctx:"This describes theories ranging from relatively mild (influence of major donors, lobbying networks, think tanks) to more extreme versions. This asks how much hidden coordination you believe exists among powerful elites."},
-  {t:"Organizations that independently monitor government and corporate behavior — like civil liberties groups or investigative journalism outlets — serve a vital democratic function.",a:"🔎 System Trust",x:"system",d:1,tier:2,
+  {t:"Organizations that independently monitor government and corporate behavior — like civil liberties groups or investigative journalism outlets — serve a vital democratic function.",a:"System Trust",x:"system",d:1,tier:2,
    ctx:"This covers watchdog organizations, the ACLU, press freedom groups, and investigative journalism. Some see them as vital democratic infrastructure; others see them as politically motivated advocacy operations."},
-  {t:"Official economic statistics — like inflation rates and unemployment figures — are presented in ways that make conditions look better than most people actually experience.",a:"🔎 System Trust",x:"system",d:-1,tier:2,
+  {t:"Official economic statistics — like inflation rates and unemployment figures — are presented in ways that make conditions look better than most people actually experience.",a:"System Trust",x:"system",d:-1,tier:2,
    ctx:"There are legitimate debates about how economic measures are constructed — e.g. whether unemployment counts discouraged workers, or whether official inflation reflects real consumer costs. This asks whether you see gaps as accidental or deliberate."},
-  {t:"Academic research, despite its flaws, is still a more reliable guide to truth on complex questions than social media commentary or political punditry.",a:"🔎 System Trust",x:"system",d:1,tier:3,
+  {t:"Academic research, despite its flaws, is still a more reliable guide to truth on complex questions than social media commentary or political punditry.",a:"System Trust",x:"system",d:1,tier:3,
    ctx:"The academic peer review system has real problems — replication failures, publication bias, slow pace. But this asks whether you still see it as more reliable than alternatives like social media or partisan media analysis."},
-  {t:"Given how much money now flows into US elections, voting functions more as a ritual that gives people a sense of participation than as a genuine exercise of democratic power.",a:"🔎 System Trust",x:"system",d:-1,tier:3,
+  {t:"Given how much money now flows into US elections, voting functions more as a ritual that gives people a sense of participation than as a genuine exercise of democratic power.",a:"System Trust",x:"system",d:-1,tier:3,
    ctx:"The Supreme Court's Citizens United ruling (2010) allowed unlimited political spending. The 2024 election cost an estimated $15 billion. This asks whether that money has fundamentally compromised what elections can achieve."},
-  {t:"The COVID-19 vaccines authorized in the US were safe and effective enough that recommending them to healthy adults was the correct public health decision.",a:"🔎 System Trust",x:"system",d:1,tier:3,
+  {t:"The COVID-19 vaccines authorized in the US were safe and effective enough that recommending them to healthy adults was the correct public health decision.",a:"System Trust",x:"system",d:1,tier:3,
    ctx:"The mRNA vaccines showed ~90%+ efficacy against severe illness in trials. Serious adverse events were rare but real. This asks whether, given the available evidence, the public health recommendation was sound."},
-  {t:"The financial industry — banks, private equity, and hedge funds — primarily extracts wealth from the broader economy rather than creating value for most people.",a:"🔎 System Trust",x:"system",d:-1,tier:3,
+  {t:"The financial industry — banks, private equity, and hedge funds — primarily extracts wealth from the broader economy rather than creating value for most people.",a:"System Trust",x:"system",d:-1,tier:3,
    ctx:"Critics point to the 2008 financial crisis, predatory lending, and private equity buyouts. Defenders argue financial markets allocate capital and enable investment. This asks which view you broadly hold."},
-  {t:"The vast majority of police officers are doing their jobs in good faith — problems in policing come from individual bad actors more than from the system itself.",a:"🔎 System Trust",x:"system",d:1,tier:3,
+  {t:"The vast majority of police officers are doing their jobs in good faith — problems in policing come from individual bad actors more than from the system itself.",a:"System Trust",x:"system",d:1,tier:3,
    ctx:"After high-profile police killings, debate intensified over whether misconduct reflects 'bad apples' or systemic problems in training, incentives, and accountability structures. This asks which view you hold."},
-  {t:"The American political system — elections, Congress, courts — is too distorted by money and concentrated power for meaningful reform to emerge from within it.",a:"🔎 System Trust",x:"system",d:-1,tier:3,
+  {t:"The American political system — elections, Congress, courts — is too distorted by money and concentrated power for meaningful reform to emerge from within it.",a:"System Trust",x:"system",d:-1,tier:3,
    ctx:"This is the argument that the rules themselves are broken and cannot be fixed from within. The counterargument is that democratic change does happen through elections, legislation, and courts — slowly, but it does happen."},
 ];
 
@@ -677,7 +897,7 @@ function buildSet(m){
 
 // ══ AXIS META ══
 const AXES={
-  econ:{label:"Economic",icon:"💰",
+  econ:{label:"Economic",icon:"",
     cL:'#2860c8',cD:'#5b8dee',
     leftShort:"Left-wing",rightShort:"Right-wing",
     leftFull:"left-wing",rightFull:"right-wing",
@@ -685,7 +905,7 @@ const AXES={
     rightDef:"Favors free markets, lower taxes, less regulation, and people taking responsibility for their own outcomes.",
     centerDef:"Balanced on economics — you see merit in both market solutions and some government involvement.",
     what:"<strong>What is this?</strong> This measures your views on money, taxes, and the economy. Do you think the government should step in to reduce inequality and provide services? Or should markets and individuals be left to sort things out?"},
-  social:{label:"Social",icon:"🏛",
+  social:{label:"Social",icon:"",
     cL:'#c83828',cD:'#e05c5c',
     leftShort:"Libertarian",rightShort:"Authoritarian",
     leftFull:"libertarian",rightFull:"authoritarian",
@@ -693,7 +913,7 @@ const AXES={
     rightDef:"Values order, tradition, and strong governance — believes some authority is necessary for a stable, functioning society.",
     centerDef:"Balanced — you value both personal freedom and some degree of order and structure.",
     what:"<strong>What is this?</strong> How much control should government and society have over how people live? Maximum individual freedom? Or is some authority necessary to keep society working?"},
-  civil:{label:"Civil Liberties",icon:"⚖️",
+  civil:{label:"Civil Liberties",icon:"",
     cL:'#1e9c50',cD:'#5ce07a',
     leftShort:"Pro-Liberty",rightShort:"Security-First",
     leftFull:"pro-liberty",rightFull:"security-first",
@@ -701,7 +921,7 @@ const AXES={
     rightDef:"More willing to accept restrictions on rights for security or public welfare — believes safety sometimes comes before individual freedoms.",
     centerDef:"Balanced — you weigh rights and security on a case-by-case basis.",
     what:"<strong>What is this?</strong> How do you weigh individual rights against security? Should people's privacy and freedoms be almost untouchable? Or can the government sometimes limit rights for the greater good?"},
-  gov:{label:"Governance",icon:"🌍",
+  gov:{label:"Governance",icon:"",
     cL:'#c8872a',cD:'#e8c547',
     leftShort:"Globalist",rightShort:"Nationalist",
     leftFull:"globalist",rightFull:"nationalist",
@@ -709,7 +929,7 @@ const AXES={
     rightDef:"Believes countries should put their own people first and is skeptical of international agreements limiting national control.",
     centerDef:"Pragmatic — open to international cooperation but also believes national interests genuinely matter.",
     what:"<strong>What is this?</strong> Should nations work together under shared rules? Or should they protect their own identity, economy, and sovereignty first?"},
-  system:{label:"System Trust",icon:"🔎",
+  system:{label:"System Trust",icon:"",
     cL:'#8c38c8',cD:'#c47de8',
     leftShort:"High Trust",rightShort:"Low Trust",
     leftFull:"high trust",rightFull:"low trust",
@@ -721,59 +941,59 @@ const AXES={
 
 // ══ IDEOLOGIES ══
 const IDEO=[
-  {n:"Progressive Left",      s:[-72,-52, 55, 45, 35], c:"#2860c8",
+  {n:"Progressive Left",      s:[-68,-48,-50, 42, 32], c:"#2860c8",
    plain:"On the traditional left-right scale, this is the left — the further-left end of it.",
    spectrum:"Far Left",
    def:"Believes structural change is needed to fix deep inequalities in wealth, race, and power. Wants strong government intervention in the economy, expansive social rights, and sees existing institutions as fundamentally flawed. Think Bernie Sanders, Alexandria Ocasio-Cortez, or Jeremy Corbyn."},
-  {n:"Social Democrat",       s:[-55,-18, 32, 42, 55], c:"#5b8dee",
+  {n:"Social Democrat",       s:[-55,-18,-32, 42, 55], c:"#5b8dee",
    plain:"On the traditional left-right scale, this is centre-left — the mainstream political tradition across much of Western Europe.",
    spectrum:"Centre-Left",
    def:"Wants a generous welfare state, regulated capitalism, and strong worker protections — but within democratic institutions rather than revolutionary change. The dominant political tradition in Western Europe. Think Scandinavia, Germany's SPD, or the mainstream of the UK Labour Party."},
-  {n:"Liberal Progressive",   s:[-30,-58, 62, 25, 42], c:"#38b06e",
+  {n:"Liberal Progressive",   s:[-30,-58,-62, 25, 42], c:"#38b06e",
    plain:"On the traditional left-right scale, this is centre-left, with a strong emphasis on personal freedoms and civil liberties.",
    spectrum:"Centre-Left / Civil Libertarian",
    def:"Strongly values personal freedom and civil liberties alongside moderate economic redistribution. Champions individual rights — reproductive, LGBTQ+, privacy — while supporting regulated markets and international cooperation. Think ACLU-type politics, or the libertarian wing of the Democratic Party."},
-  {n:"Libertarian",           s:[ 58,-70, 75,  5, 20], c:"#c8872a",
+  {n:"Libertarian",           s:[ 58,-70,-75,  5, 20], c:"#c8872a",
    plain:"Libertarians don't fit neatly on a left-right line — they are fiscally right-wing but strongly anti-government on social issues too. Often described as 'fiscally conservative, socially liberal.'",
    spectrum:"Libertarian (Off the traditional scale)",
    def:"Believes government should be radically smaller in both the economy and personal life. Low taxes, free markets, minimal regulation, and maximum individual freedom. Neither traditionally left nor right — opposes government control regardless of which party wields it. Think Ron Paul or the Cato Institute."},
-  {n:"Liberal Conservative",  s:[ 38,-40, 22,-12, 40], c:"#a0c060",
+  {n:"Liberal Conservative",  s:[ 38,-40,-22,-12, 40], c:"#a0c060",
    plain:"On the traditional left-right scale, this is centre-right — but more socially open than a typical conservative, and comfortable with globalisation and diversity.",
    spectrum:"Centre-Right / Socially Liberal",
    def:"Economically market-oriented but socially open-minded — comfortable with cultural change, immigration, and globalization while preferring limited government and lower taxes. Common in Europe (think Macron, or pre-2016 UK Conservatives) but harder to place on the American left-right spectrum. Often fiscally right, socially liberal."},
-  {n:"Moderate Conservative", s:[ 42, 15,-10,-18, 42], c:"#f0b070",
+  {n:"Moderate Conservative", s:[ 42, 15, 10,-18, 42], c:"#f0b070",
    plain:"On the traditional left-right scale, this is centre-right — right-leaning on economics but moderate and non-ideological on social issues.",
    spectrum:"Centre-Right",
    def:"Center-right on economics — favors markets, lower taxes, and limited government — but socially moderate, accepting of diversity, and comfortable with democratic institutions. Not ideologically rigid. Think mainstream pre-Trump Republicans, the moderate wing of the UK Conservative Party, or Germany's CDU."},
-  {n:"Traditional Conservative",s:[55, 30,-15,-38, 45], c:"#e8a060",
+  {n:"Traditional Conservative",s:[55, 30, 15,-38, 45], c:"#e8a060",
    plain:"On the traditional left-right scale, this is right — the classic mainstream conservative position in most democracies.",
    spectrum:"Right",
    def:"Believes in free enterprise, limited government, and gradual rather than rapid social change. Values stable institutions, rule of law, and proven norms over untested reform. The pre-Trump Republican mainstream — think George H.W. Bush, John McCain, or the UK Conservative Party of the 1990s."},
-  {n:"Social Conservative",   s:[ 22, 65,-42,-52, 28], c:"#c83828",
+  {n:"Social Conservative",   s:[ 22, 65, 42,-52, 28], c:"#c83828",
    plain:"On the traditional left-right scale, this is right-wing — with a particular focus on cultural and moral values rather than just economics.",
    spectrum:"Right / Social Right",
    def:"Believes traditional moral values — rooted in religion, family structure, and cultural heritage — should shape law and public life. Accepts market economics but prioritizes social order, community cohesion, and the defense of traditional institutions against rapid change."},
-  {n:"Nationalist Right",     s:[ 18, 55,-28,-75,-30], c:"#8b0000",
+  {n:"Nationalist Right",     s:[ 18, 55, 28,-75,-30], c:"#8b0000",
    plain:"On the traditional left-right scale, this is right-wing to far-right — combining strong nationalism with scepticism of elites and international institutions.",
    spectrum:"Right / Nationalist",
    def:"Puts national identity and sovereignty above all else. Deeply skeptical of immigration, globalism, and international institutions. Sees the political establishment as corrupt and out of touch with ordinary people's concerns about cultural change and national decline. Think Marine Le Pen, Viktor Orbán, or the MAGA wing of the Republican Party."},
-  {n:"Authoritarian Left",    s:[-68, 62,-45, 14,-20], c:"#8c38c8",
+  {n:"Authoritarian Left",    s:[-68, 62, 45, 14,-20], c:"#8c38c8",
    plain:"On the traditional left-right scale, this is far-left — but with an emphasis on strong state power rather than individual freedom.",
    spectrum:"Far Left / Authoritarian",
    def:"Seeks radical economic equality and collective ownership, but through centralized state power rather than individual liberty. Willing to restrict dissent and concentrate authority to achieve social transformation. Think Soviet-era communism, Maoist China, or the harder edges of 20th-century socialist movements."},
-  {n:"Left Populist",         s:[-55, -5,  8,-45,-75], c:"#5cb8e0",
+  {n:"Left Populist",         s:[-55, -5, -8,-45,-75], c:"#5cb8e0",
    plain:"On the traditional left-right scale, this leans left — but the defining feature is deep distrust of the entire political establishment, combined with scepticism of globalisation.",
    spectrum:"Left / Anti-Establishment",
    def:"Distrusts the political establishment, corporate power, and mainstream media — but from the left. Wants economic redistribution and stronger worker protections, while being deeply skeptical of globalization and elite-driven institutions. This isn't about caring more — it's about trusting the system far less. Think the most anti-establishment wing of Sanders supporters, Podemos in Spain, or France Insoumise."},
-  {n:"Right Populist",        s:[ 20, 40,-20,-62,-72], c:"#e08040",
+  {n:"Right Populist",        s:[ 20, 40, 20,-62,-72], c:"#e08040",
    plain:"On the traditional left-right scale, this leans right — but the defining feature is rejection of the political establishment, elites, and mainstream institutions.",
    spectrum:"Right / Anti-Establishment",
    def:"Believes ordinary people are betrayed by corrupt elites, rigged systems, and out-of-touch institutions. Skeptical of mainstream media, global organizations, and the political class regardless of party. Combines cultural conservatism with economic grievance and deep distrust of established power. Think Trump, Bolsonaro, or the Brexit movement."},
-  {n:"Technocrat",            s:[  0,  5, 12, 48, 78], c:"#40b8a0",
+  {n:"Technocrat",            s:[  0,  5,-12, 48, 78], c:"#40b8a0",
    plain:"On the traditional left-right scale, this sits near the centre — the defining feature is very high trust in experts and institutions rather than strong ideological leanings.",
    spectrum:"Centre / Pro-Institution",
    def:"Believes complex policy problems are best solved by qualified experts using evidence and data rather than ideology or populist instinct. Highly trusts institutions, international bodies, and scientific consensus. Values competence and stability over ideological purity. Think Bloomberg, the IMF, or much of the EU bureaucratic class."},
-  {n:"Progressive Realist",   s:[-42,-12, 22, 28, 40], c:"#7baeff",
+  {n:"Progressive Realist",   s:[-42,-12,-22, 28, 40], c:"#7baeff",
    plain:"On the traditional left-right scale, this is centre-left — leaning left on most issues but pragmatic and moderate about how change happens.",
    spectrum:"Centre-Left",
    def:"Leans left on economic fairness and social progress, but prioritizes what's achievable over what's ideal. Pragmatic about working within institutions and building coalitions rather than demanding revolutionary change. Values evidence, compromise, and incremental reform. Think Obama-era politics, or mainstream center-left Democrats."},
@@ -782,53 +1002,105 @@ const IDEO=[
 // ══ CURATED FAMOUS FIGURES (20 most globally recognizable) ══
 // [econ (-100=left, +100=right), social (-100=lib, +100=auth)]
 const FIGURES=[
-  {n:"Karl Marx",        e:-95, s:60,  c:"#e05c5c", desc:"German philosopher, founder of Marxism/Communism"},
-  {n:"Gandhi",           e:-40, s:-60, c:"#e8c547", desc:"Indian independence leader, advocate of nonviolence"},
-  {n:"Martin Luther King Jr.", e:-60, s:-50, c:"#5b8dee", desc:"American civil rights leader"},
-  {n:"Adolf Hitler",     e:-20, s:98,  c:"#555",    desc:"Nazi dictator of Germany"},
-  {n:"Joseph Stalin",    e:-80, s:98,  c:"#c83828", desc:"Soviet Union leader, authoritarian communist"},
-  {n:"Mao Zedong",       e:-90, s:90,  c:"#c83828", desc:"Founder of the People's Republic of China"},
-  {n:"Ronald Reagan",    e:70,  s:30,  c:"#e08040", desc:"40th US President, championed free markets"},
-  {n:"Margaret Thatcher",e:75,  s:45,  c:"#e08040", desc:"UK Prime Minister, advocate of free markets"},
-  {n:"Barack Obama",     e:-35, s:-30, c:"#5b8dee", desc:"44th US President, center-left Democrat"},
-  {n:"Donald Trump",     e:30,  s:65,  c:"#e05c5c", desc:"45th/47th US President, nationalist populist"},
-  {n:"Bernie Sanders",   e:-70, s:-35, c:"#2860c8", desc:"US Senator, democratic socialist"},
-  {n:"Nelson Mandela",   e:-55, s:-40, c:"#1e9c50", desc:"South African President, anti-apartheid leader"},
-  {n:"Ayn Rand",         e:90,  s:-75, c:"#c8872a", desc:"Philosopher, champion of free markets and individualism"},
-  {n:"Milton Friedman",  e:85,  s:-40, c:"#c8872a", desc:"Economist, free-market champion"},
-  {n:"Noam Chomsky",     e:-80, s:-65, c:"#2860c8", desc:"Linguist and left-wing political commentator"},
-  {n:"Che Guevara",      e:-80, s:55,  c:"#e05c5c", desc:"Marxist revolutionary leader"},
-  {n:"Fidel Castro",     e:-85, s:75,  c:"#c83828", desc:"Cuban revolutionary leader, communist"},
-  {n:"Emmanuel Macron",  e:10,  s:-5,  c:"#e8c547", desc:"French President, centrist"},
-  {n:"Viktor Orbán",     e:20,  s:80,  c:"#c83828", desc:"Hungarian Prime Minister, nationalist authoritarian"},
-  {n:"Angela Merkel",    e:5,   s:10,  c:"#e8a060", desc:"German Chancellor, center-right moderate"},
+  // Far left economic, authoritarian social
+  {n:"Karl Marx",          e:-95, s:65,  c:"#e05c5c", desc:"Philosopher who founded communism. Believed capitalism exploited workers and should be replaced by collective ownership."},
+  {n:"Joseph Stalin",      e:-82, s:98,  c:"#8b0000", desc:"Soviet dictator. Ruled through terror, collectivized agriculture, and built a totalitarian state in the name of communism."},
+  {n:"Mao Zedong",         e:-88, s:92,  c:"#c83828", desc:"Founded the People's Republic of China. Led one of history's most radical communist experiments with devastating human costs."},
+  {n:"Fidel Castro",       e:-82, s:78,  c:"#c83828", desc:"Cuban revolutionary who ruled for nearly 50 years. Built a socialist state with universal healthcare but no political freedom."},
+  // Far left economic, libertarian social
+  {n:"Noam Chomsky",       e:-78, s:-68, c:"#2860c8", desc:"America's most prominent left-wing intellectual. Anarchist-leaning, deeply anti-imperialist, champion of free speech."},
+  {n:"Che Guevara",        e:-78, s:50,  c:"#e05c5c", desc:"Marxist revolutionary who helped Castro take Cuba. Became a global symbol of left-wing rebellion and anti-imperialism."},
+  {n:"Bernie Sanders",     e:-68, s:-32, c:"#2860c8", desc:"US Senator from Vermont. Runs as a democratic socialist, pushing Medicare for All, free college, and taxing the ultra-wealthy."},
+  {n:"Nelson Mandela",     e:-55, s:-42, c:"#1e9c50", desc:"Led the fight against apartheid in South Africa, spending 27 years in prison. Became the country's first Black president in 1994."},
+  {n:"Martin Luther King", e:-58, s:-52, c:"#5b8dee", desc:"Led the US civil rights movement through nonviolent protest. Advocated for racial equality and economic justice."},
+  {n:"Gandhi",             e:-42, s:-62, c:"#e8c547", desc:"Led India's independence movement through nonviolent civil disobedience. One of history's most influential political figures."},
+  // Centre-left
+  {n:"Barack Obama",       e:-35, s:-30, c:"#5b8dee", desc:"44th US President. Expanded healthcare access, withdrew from Iraq, and navigated the 2008 financial crisis. Center-left Democrat."},
+  {n:"AOC",                e:-72, s:-28, c:"#2860c8", desc:"Alexandria Ocasio-Cortez. Progressive US Congresswoman, democratic socialist, champion of the Green New Deal."},
+  {n:"Justin Trudeau",     e:-30, s:-32, c:"#7baeff", desc:"Canadian Prime Minister. Liberal on social issues, moderate on economics, strong supporter of multiculturalism."},
+  // Centre
+  {n:"Emmanuel Macron",    e:12,  s:-8,  c:"#e8c547", desc:"French President. Founded his own centrist movement, pro-European, economically liberal, socially moderate."},
+  {n:"Angela Merkel",      e:8,   s:12,  c:"#e8a060", desc:"German Chancellor for 16 years. Pragmatic center-right, pro-EU, managed the Eurozone crisis and refugee crisis."},
+  {n:"Tony Blair",         e:-18, s:-15, c:"#7baeff", desc:"UK Prime Minister who modernized the Labour Party into 'New Labour' — center-left, pro-market, pro-NATO."},
+  // Centre-right to right
+  {n:"Ronald Reagan",      e:72,  s:32,  c:"#e08040", desc:"40th US President. Championed deregulation, tax cuts, and free markets. His 'Reaganomics' reshaped American conservatism."},
+  {n:"Margaret Thatcher",  e:76,  s:48,  c:"#e08040", desc:"UK Prime Minister who dismantled nationalized industries, broke unions, and transformed Britain's economy through free-market reform."},
+  {n:"Milton Friedman",    e:85,  s:-42, c:"#c8872a", desc:"Economist who argued for free markets, minimal government, and monetarism. His ideas shaped economic policy globally from the 1980s."},
+  {n:"Ayn Rand",           e:90,  s:-78, c:"#c8872a", desc:"Philosopher who developed Objectivism — radical individualism, laissez-faire capitalism, and rejection of altruism as a virtue."},
+  // Authoritarian right
+  {n:"Donald Trump",       e:28,  s:68,  c:"#e05c5c", desc:"45th and 47th US President. Nationalist, protectionist, anti-immigration. Reshaped the Republican Party around his personal movement."},
+  {n:"Viktor Orbán",       e:18,  s:82,  c:"#c83828", desc:"Hungarian Prime Minister who systematically dismantled democratic institutions and press freedom while claiming to defend Christian values."},
+  {n:"Augusto Pinochet",   e:78,  s:95,  c:"#8b0000", desc:"Chilean dictator who came to power in a 1973 coup, killing thousands. Implemented radical free-market reforms under a brutal authoritarian state."},
+  {n:"Adolf Hitler",       e:-18, s:99,  c:"#444",    desc:"Nazi dictator of Germany. Responsible for the Holocaust and World War II. Placed here as a historical reference point only."},
 ];
 
 // ══ COUNTRIES ══
+// Scores: [econ, social, civil, gov, system]
+// civil: NEGATIVE = pro-liberty, POSITIVE = security-first (matches scoring convention)
 const COU=[
-  {n:"Sweden",f:"🇸🇪",s:[-60,-30,50,55,65]},{n:"Norway",f:"🇳🇴",s:[-55,-40,55,55,70]},
-  {n:"Finland",f:"🇫🇮",s:[-50,-25,52,50,68]},{n:"Denmark",f:"🇩🇰",s:[-52,-28,54,52,70]},
-  {n:"Netherlands",f:"🇳🇱",s:[-25,-35,60,50,60]},{n:"Germany",f:"🇩🇪",s:[-40,-20,45,50,55]},
-  {n:"France",f:"🇫🇷",s:[-50,-15,40,40,35]},{n:"Spain",f:"🇪🇸",s:[-40,-10,38,35,30]},
-  {n:"Italy",f:"🇮🇹",s:[-20,20,25,20,15]},{n:"United Kingdom",f:"🇬🇧",s:[-20,-10,50,20,45]},
-  {n:"Ireland",f:"🇮🇪",s:[-35,-15,48,38,50]},{n:"Switzerland",f:"🇨🇭",s:[10,-20,55,10,60]},
-  {n:"Poland",f:"🇵🇱",s:[-10,45,-10,-25,20]},{n:"Hungary",f:"🇭🇺",s:[5,60,-20,-50,-20]},
-  {n:"Greece",f:"🇬🇷",s:[-30,20,15,10,5]},{n:"Russia",f:"🇷🇺",s:[5,65,-50,-50,-40]},
-  {n:"Ukraine",f:"🇺🇦",s:[-10,20,10,-20,10]},{n:"Turkey",f:"🇹🇷",s:[-5,55,-30,-30,-10]},
-  {n:"United States",f:"🇺🇸",s:[15,10,30,-20,20]},{n:"Canada",f:"🇨🇦",s:[-30,-20,55,35,50]},
-  {n:"Mexico",f:"🇲🇽",s:[-20,20,10,0,-25]},{n:"Brazil",f:"🇧🇷",s:[-10,30,-10,-10,-20]},
-  {n:"Argentina",f:"🇦🇷",s:[-45,10,20,10,-30]},{n:"Colombia",f:"🇨🇴",s:[-5,35,-5,-10,-25]},
-  {n:"Chile",f:"🇨🇱",s:[-15,15,20,10,-10]},{n:"Japan",f:"🇯🇵",s:[-10,20,30,10,40]},
-  {n:"South Korea",f:"🇰🇷",s:[-5,15,25,5,35]},{n:"China",f:"🇨🇳",s:[-20,70,-60,-30,10]},
-  {n:"India",f:"🇮🇳",s:[-5,40,-20,-15,5]},{n:"Indonesia",f:"🇮🇩",s:[-5,45,-15,-5,10]},
-  {n:"Australia",f:"🇦🇺",s:[-15,-10,45,20,45]},{n:"New Zealand",f:"🇳🇿",s:[-30,-20,52,30,55]},
-  {n:"Singapore",f:"🇸🇬",s:[20,40,-5,30,60]},{n:"Saudi Arabia",f:"🇸🇦",s:[10,75,-55,-30,10]},
-  {n:"Iran",f:"🇮🇷",s:[-10,70,-55,-20,-30]},{n:"Egypt",f:"🇪🇬",s:[-5,60,-35,-15,-15]},
-  {n:"Nigeria",f:"🇳🇬",s:[-5,50,-15,-10,-20]},{n:"South Africa",f:"🇿🇦",s:[-35,15,15,10,-15]},
-  {n:"Kenya",f:"🇰🇪",s:[-10,30,5,0,-10]},{n:"Ghana",f:"🇬🇭",s:[-10,35,10,5,5]},
+  // Nordic
+  {n:"Sweden",        f:"🇸🇪", s:[-60,-32,-50, 55, 65]},
+  {n:"Norway",        f:"🇳🇴", s:[-56,-40,-52, 55, 70]},
+  {n:"Denmark",       f:"🇩🇰", s:[-52,-30,-50, 52, 68]},
+  {n:"Finland",       f:"🇫🇮", s:[-50,-28,-48, 50, 70]},
+  // Western Europe
+  {n:"Germany",       f:"🇩🇪", s:[-40,-22,-42, 50, 55]},
+  {n:"Netherlands",   f:"🇳🇱", s:[-28,-36,-58, 50, 60]},
+  {n:"France",        f:"🇫🇷", s:[-48,-15,-38, 40, 35]},
+  {n:"Spain",         f:"🇪🇸", s:[-38,-10,-35, 35, 30]},
+  {n:"Portugal",      f:"🇵🇹", s:[-40,-12,-36, 36, 32]},
+  {n:"Belgium",       f:"🇧🇪", s:[-30,-12,-42, 44, 48]},
+  {n:"Ireland",       f:"🇮🇪", s:[-35,-18,-45, 38, 50]},
+  {n:"United Kingdom",f:"🇬🇧", s:[-20,-10,-48, 20, 45]},
+  {n:"Switzerland",   f:"🇨🇭", s:[ 10,-22,-52, 10, 60]},
+  {n:"Austria",       f:"🇦🇹", s:[  0, 22, -8,  5, 40]},
+  {n:"Italy",         f:"🇮🇹", s:[-20, 20,-22, 20, 15]},
+  {n:"Greece",        f:"🇬🇷", s:[-32, 18,-15, 10,  5]},
+  // Eastern Europe
+  {n:"Poland",        f:"🇵🇱", s:[-10, 45, 12,-25, 20]},
+  {n:"Hungary",       f:"🇭🇺", s:[  5, 62, 22,-50,-20]},
+  {n:"Czech Republic",f:"🇨🇿", s:[  5, 12,-28,-10, 35]},
+  // Post-Soviet
+  {n:"Russia",        f:"🇷🇺", s:[  5, 68, 48,-50,-40]},
+  {n:"Ukraine",       f:"🇺🇦", s:[-10, 22, 10,-20, 10]},
+  // Middle East
+  {n:"Turkey",        f:"🇹🇷", s:[ -5, 58, 32,-30,-10]},
+  {n:"Saudi Arabia",  f:"🇸🇦", s:[ 10, 78, 55,-30, 10]},
+  {n:"Iran",          f:"🇮🇷", s:[-10, 72, 58,-20,-30]},
+  {n:"Egypt",         f:"🇪🇬", s:[ -5, 62, 38,-15,-15]},
+  {n:"Israel",        f:"🇮🇱", s:[ 12, 28,-10,-10, 30]},
+  // North America
+  {n:"United States", f:"🇺🇸", s:[ 15, 10,-28,-20, 20]},
+  {n:"Canada",        f:"🇨🇦", s:[-30,-22,-52, 35, 50]},
+  {n:"Mexico",        f:"🇲🇽", s:[-20, 20,-10,  0,-25]},
+  // Latin America
+  {n:"Brazil",        f:"🇧🇷", s:[-10, 30, 12,-10,-20]},
+  {n:"Argentina",     f:"🇦🇷", s:[-45, 10,-18, 10,-30]},
+  {n:"Colombia",      f:"🇨🇴", s:[ -5, 38,  8,-10,-25]},
+  {n:"Chile",         f:"🇨🇱", s:[-15, 15,-18, 10,-10]},
+  {n:"Venezuela",     f:"🇻🇪", s:[-52, 42, 28, -5,-55]},
+  {n:"Cuba",          f:"🇨🇺", s:[-68, 72, 60,  5,-42]},
+  // East Asia
+  {n:"Japan",         f:"🇯🇵", s:[-10, 20,-28, 10, 40]},
+  {n:"South Korea",   f:"🇰🇷", s:[ -5, 15,-22,  5, 35]},
+  {n:"China",         f:"🇨🇳", s:[-20, 72, 62,-30, 10]},
+  {n:"Taiwan",        f:"🇹🇼", s:[-15,-10,-38, 12, 45]},
+  // South / Southeast Asia
+  {n:"India",         f:"🇮🇳", s:[ -5, 42, 22,-15,  5]},
+  {n:"Indonesia",     f:"🇮🇩", s:[ -5, 45, 18, -5, 10]},
+  {n:"Vietnam",       f:"🇻🇳", s:[-28, 62, 42, 10, 15]},
+  {n:"Singapore",     f:"🇸🇬", s:[ 20, 42,  8, 30, 60]},
+  // Oceania
+  {n:"Australia",     f:"🇦🇺", s:[-15,-10,-42, 20, 45]},
+  {n:"New Zealand",   f:"🇳🇿", s:[-30,-22,-50, 30, 55]},
+  // Africa
+  {n:"South Africa",  f:"🇿🇦", s:[-35, 15,-12, 10,-15]},
+  {n:"Nigeria",       f:"🇳🇬", s:[ -5, 52, 18,-10,-20]},
+  {n:"Kenya",         f:"🇰🇪", s:[-10, 30, -5,  0,-10]},
+  {n:"Ghana",         f:"🇬🇭", s:[-10, 35, -8,  5,  5]},
 ];
 
-// ══ TOOLTIPS ══
+// ══ TOOLTIPS ════
 const GLOSS={
   'left-wing':'Favors government action to reduce inequality, fund public services, and regulate markets.',
   'right-wing':'Favors free markets, lower taxes, less regulation, and personal economic responsibility.',
@@ -848,7 +1120,7 @@ function tipG(word,align){return GLOSS[word.toLowerCase()]?tip(word,GLOSS[word.t
 
 // ══ STATE ══
 const SM=[2,1,0,-1,-2];
-const CC={"💰 Economic":"var(--econ)","🏛 Social":"var(--social)","⚖️ Civil Liberties":"var(--civil)","🌍 Governance":"var(--gov)","🔎 System Trust":"var(--system)"};
+const CC={"Economic":"var(--econ)","Social":"var(--social)","Civil Liberties":"var(--civil)","Governance":"var(--gov)","System Trust":"var(--system)"};
 let mode=null,qSet=[],cur=0,answers=[],cachedScores=null,hoverListenerAdded=false;
 
 function show(id){document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');window.scrollTo(0,0);}
@@ -1065,12 +1337,13 @@ function showFullResults(){
   document.getElementById('rSpectrum').textContent=best.spectrum||'';
   document.getElementById('rIdeoDef').textContent=best.def;
   document.getElementById('rPlainExplain').textContent=best.plain||'';
-  document.getElementById('spId').textContent=best.n;
+  document.getElementById('scIdeo').textContent=best.n;
+  document.getElementById('scSpectrum').textContent=best.spectrum||'';
   const tag=document.getElementById('rMtag');
   tag.textContent=cfg.label;tag.style.background=cfg.bg;tag.style.color=cfg.color;tag.style.border=`1px solid ${cfg.color}`;
   document.getElementById('rOneLiner').innerHTML=buildOneLiner(s);
   show('secRes');
-  setTimeout(()=>{drawCompass(s);renderAxisCards(s);renderIdeo(s);renderCom(s);renderPills(s);renderFigSim(s);},60);
+  setTimeout(()=>{drawCompass(s);renderAxisCards(s);renderIdeo(s);renderCom(s);renderShareCard(s);renderFigSim(s);},60);
 }
 
 function buildOneLiner(s){
@@ -1103,7 +1376,7 @@ function drawCompass(s){
   qData.forEach(q=>{
     ctx.fillStyle=q.c;ctx.fillRect(q.x,q.y,q.w,q.h);
     ctx.fillStyle=isDark?'rgba(255,255,255,.15)':'rgba(0,0,0,.15)';
-    ctx.font='bold 12px Outfit,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.font='bold 12px Inter,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
     ctx.fillText(q.label,q.x+q.w/2,q.y+q.h/2);
   });
 
@@ -1119,7 +1392,7 @@ function drawCompass(s){
 
   // Axis edge labels — drawn inside the border so they're always visible
   const labelColor=isDark?'rgba(255,255,255,.5)':'rgba(0,0,0,.45)';
-  ctx.font='bold 11px Outfit,sans-serif';
+  ctx.font='bold 11px Inter,sans-serif';
   ctx.fillStyle=labelColor;
 
   // X-axis: LEFT label on left edge, RIGHT label on right edge
@@ -1161,7 +1434,7 @@ function drawCompass(s){
   ctx.fillStyle=isDark?'#e8c547':'#c8872a';ctx.fill();
   ctx.strokeStyle='#fff';ctx.lineWidth=2.5;ctx.stroke();
   ctx.fillStyle=isDark?'#e8c547':'#c8872a';
-  ctx.font='bold 12px Outfit,sans-serif';ctx.textAlign='center';ctx.textBaseline='bottom';
+  ctx.font='bold 12px Inter,sans-serif';ctx.textAlign='center';ctx.textBaseline='bottom';
   ctx.fillText('YOU',ux,uy-14);
 
   // Setup hover
@@ -1300,38 +1573,119 @@ function renderCom(s){
   const ml=Math.round(Math.max(0,Math.min(99,50-s.econ*.4)));
   document.getElementById('cPct').textContent=ml+'%';
   document.getElementById('cRight').textContent=(100-ml)+'%';
-  const sorted=COU.map(c=>({...c,d:Math.sqrt(['econ','social','civil','gov','system'].reduce((sum,ax,i)=>sum+Math.pow(s[ax]-c.s[i],2),0))})).sort((a,b)=>a.d-b.d);
+
+  const sorted=COU.map(c=>({
+    ...c,
+    d:Math.sqrt(['econ','social','civil','gov','system'].reduce((sum,ax,i)=>sum+Math.pow(s[ax]-c.s[i],2),0)),
+    sim:0
+  })).sort((a,b)=>a.d-b.d);
+  sorted.forEach(c=>{ c.sim=Math.round(Math.max(0,(1-(c.d/380))*100)); });
+
   document.getElementById('cClose').textContent=sorted[0].f+' '+sorted[0].n;
-  const tbl=document.getElementById('cTbl');
-  tbl.innerHTML=`<tr><th>Country</th><th>Econ.</th><th>Social</th><th>Similarity</th></tr>
-    <tr class="yrow"><td>⭐ You</td><td style="color:var(--econ)">${s.econ>0?'+':''}${s.econ}</td><td style="color:var(--social)">${s.social>0?'+':''}${s.social}</td><td>—</td></tr>`;
-  sorted.slice(0,8).forEach(c=>{
-    const sim=Math.round(Math.max(0,(1-c.d/400)*100));
-    tbl.insertAdjacentHTML('beforeend',`
-      <tr>
-        <td><span class="cflag">${c.f}</span><span class="cnm">${c.n}</span></td>
-        <td><div class="mb"><div class="mbf" style="background:var(--econ);width:${50+c.s[0]/2}%"></div></div></td>
-        <td><div class="mb"><div class="mbf" style="background:var(--social);width:${50+c.s[1]/2}%"></div></div></td>
-        <td style="color:${sim>60?'var(--civil)':sim>40?'var(--accent)':'var(--muted)'};font-weight:${sim>60?700:400}">${sim}%</td>
-      </tr>`);
+
+  const closest=sorted.slice(0,3);
+  const furthest=sorted.slice(-3).reverse();
+
+  // Brief political descriptions for countries
+  const desc={
+    "Sweden":"Strongly left-wing, very libertarian, highly trusting of institutions.",
+    "Norway":"Far left economically, libertarian, globalist and pro-institution.",
+    "Finland":"Left-leaning, libertarian, highly trusting of government.",
+    "Denmark":"Centre-left, libertarian, globalist, high institutional trust.",
+    "Netherlands":"Centre-left, libertarian, strongly pro-civil liberties.",
+    "Germany":"Centre-left, moderate, globalist, trusts institutions.",
+    "France":"Left-leaning, moderate social views, moderate trust.",
+    "Spain":"Centre-left, moderate, globalist.",
+    "Italy":"Centre-right leaning, moderate, mixed trust.",
+    "United Kingdom":"Centre-left, moderate libertarian, mid-level trust.",
+    "Ireland":"Centre-left, moderate, globalist, trusting.",
+    "Switzerland":"Centre-right, libertarian, moderate on governance.",
+    "Poland":"Centre-left economics, authoritarian social, nationalist.",
+    "Hungary":"Centre, strongly authoritarian, nationalist, low trust.",
+    "Greece":"Left-leaning, moderate, mixed trust.",
+    "Russia":"Centre-right, strongly authoritarian, nationalist, very low trust.",
+    "Ukraine":"Centre, moderate, nationalist leaning.",
+    "Turkey":"Centre, authoritarian, nationalist, low trust.",
+    "United States":"Centre-right, moderate, slightly nationalist.",
+    "Canada":"Centre-left, moderate libertarian, globalist, trusting.",
+    "Mexico":"Centre-left, moderate, low institutional trust.",
+    "Brazil":"Centre, moderate authoritarian, low trust.",
+    "Argentina":"Left-leaning, moderate, low trust.",
+    "Colombia":"Centre, moderate authoritarian, low trust.",
+    "Chile":"Centre, moderate, mixed trust.",
+    "Japan":"Centre-left, moderate, trusting.",
+    "South Korea":"Centre, moderate, trusting.",
+    "China":"Centre-left economics, strongly authoritarian, anti-liberal.",
+    "India":"Centre, moderate authoritarian, low trust.",
+    "Indonesia":"Centre, moderate authoritarian.",
+    "Australia":"Centre-left, libertarian leaning, trusting.",
+    "New Zealand":"Centre-left, libertarian, globalist, trusting.",
+    "Singapore":"Centre-right, authoritarian, globalist, high trust.",
+    "Saudi Arabia":"Centre-right, strongly authoritarian, nationalist, anti-liberty.",
+    "Iran":"Centre-left economics, strongly authoritarian, low trust.",
+    "Egypt":"Centre, authoritarian, low trust.",
+    "Nigeria":"Centre, authoritarian, low trust.",
+    "South Africa":"Left-leaning, moderate, low trust.",
+    "Kenya":"Centre, moderate authoritarian.",
+    "Ghana":"Centre, moderate authoritarian.",
+  };
+
+  const el=document.getElementById('cCountries');
+  el.innerHTML='';
+
+  el.insertAdjacentHTML('beforeend','<div class="country-group-title">🟢 Most similar to you</div><div class="country-row-set" id="closestRows"></div><div class="country-divider"></div><div class="country-group-title">🔴 Most different from you</div><div class="country-row-set" id="furthestRows"></div>');
+
+  closest.forEach(c=>{
+    document.getElementById('closestRows').insertAdjacentHTML('beforeend',`
+      <div class="country-row">
+        <span class="country-flag-big">${c.f}</span>
+        <div style="flex:1">
+          <div class="country-row-name">${c.n}</div>
+          <div class="country-row-desc">${desc[c.n]||''}</div>
+        </div>
+        <span class="country-row-pct" style="background:var(--civil-bg);color:var(--civil)">${c.sim}% match</span>
+      </div>`);
+  });
+
+  furthest.forEach(c=>{
+    document.getElementById('furthestRows').insertAdjacentHTML('beforeend',`
+      <div class="country-row">
+        <span class="country-flag-big">${c.f}</span>
+        <div style="flex:1">
+          <div class="country-row-name">${c.n}</div>
+          <div class="country-row-desc">${desc[c.n]||''}</div>
+        </div>
+        <span class="country-row-pct" style="background:var(--social-bg);color:var(--social)">${c.sim}% match</span>
+      </div>`);
   });
 }
 
 // ══ SHARE PILLS ══
-function renderPills(s){
-  const el=document.getElementById('spPills');el.innerHTML='';
-  const isDark=document.documentElement.getAttribute('data-theme')==='dark';
+function renderShareCard(s){
+  const best=bestIdeo(s);
+  const barColors={econ:'#5b8dee',social:'#e05c5c',civil:'#5ce07a',gov:'#e8c547',system:'#c47de8'};
+  const el=document.getElementById('scBars');
+  el.innerHTML='';
   ['econ','social','civil','gov','system'].forEach(ax=>{
-    const m=AXES[ax],v=s[ax],lbl=v>=0?m.rightShort:m.leftShort,pct=Math.abs(v);
-    if(pct<10)return;
-    const c=isDark?m.cD:m.cL;
-    el.insertAdjacentHTML('beforeend',`<div class="sppill" style="background:${c}18;border-color:${c}50;color:${c}">${m.icon} ${m.label}: ${pct}% ${lbl}</div>`);
+    const m=AXES[ax],v=s[ax],abs=Math.abs(v),lbl=v>=0?m.rightShort:m.leftShort;
+    const c=barColors[ax];
+    const barLeft=v>=0?50:(50+v/2);
+    const barW=Math.max(abs/2,1);
+    el.insertAdjacentHTML('beforeend',`
+      <div class="sc-bar-row">
+        <span class="sc-bar-label" style="color:rgba(255,255,255,.5)">${m.label}</span>
+        <div class="sc-bar-track">
+          <div class="sc-bar-mid"></div>
+          <div class="sc-bar-fill" style="background:${c};left:${barLeft}%;width:${barW}%"></div>
+        </div>
+        <span class="sc-bar-val" style="color:${c}">${abs}% ${lbl}</span>
+      </div>`);
   });
 }
 
 function copyRes(){
   const s=calcS(),best=bestIdeo(s);
-  const txt=`My Political Compass Results\nTest: ${MODES[mode].label}\nClosest Ideology: ${best.n}\n\n${best.def}\n\n`+
+  const txt=`Find My Politics Results — findmypolitics.com\nTest: ${MODES[mode].label}\nClosest Ideology: ${best.n}\n\n${best.def}\n\n`+
     Object.entries(s).map(([ax,v])=>{const m=AXES[ax];return`${m.icon} ${m.label}: ${Math.abs(v)}% ${v>=0?m.rightShort:m.leftShort}`;}).join('\n');
   navigator.clipboard.writeText(txt).then(()=>{
     const btn=document.querySelector('.sbtn');
@@ -1349,7 +1703,7 @@ function copyRes(){
 }
 function shareTw(){
   const s=calcS(),best=bestIdeo(s);
-  const txt=encodeURIComponent(`I took a political compass test — my closest ideology: ${best.n}\n\n${TAGLINES[best.n]||''}`);
+  const txt=encodeURIComponent(`I took the Find My Politics test (findmypolitics.com) — my closest ideology: ${best.n}\n\n${TAGLINES[best.n]||''}`);
   window.open(`https://twitter.com/intent/tweet?text=${txt}`,'_blank');
 }
 </script>
